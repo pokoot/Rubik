@@ -1,2 +1,5 @@
-Thanks to the following contributors:
+[AUTHOR]
+- Harold Kim Cantil
+
+[CONTRIBUTORS]
 - Your Name Here <yournamehere@g.com>
