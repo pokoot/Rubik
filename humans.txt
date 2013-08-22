@@ -1,5 +1,9 @@
-[AUTHOR]
-- Harold Kim Cantil
+# humanstxt.org/
+# The humans responsible & technology colophon
 
-[CONTRIBUTORS]
-- Your Name Here <yournamehere@g.com>
+# AUTHOR
+    Harold Kim Cantil
+
+# THANKS
+ 
+    <name>
