@@ -1,15 +1,15 @@
 # localhost configuration file
 
-DATABASE:
+database:
     host: localhost
-    username: ##AUTO_REPLACE_DB_USERNAME##
-    password: ##AUTO_REPLACE_DB_PASSWORD##
-    name: ##AUTO_REPLACE_DB_NAME##
+    username: %database_username%
+    password: %database_password%
+    name: %database_name%
 
-SITE:
+site:
     name: Test
     description: Test CMS
 
-GENERAL:
+general:
     maintenance: false  
 

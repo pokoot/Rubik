@@ -8,20 +8,18 @@
 
     $y = file_get_contents( $f );
 
-
-
     $arr = array(
-        "AUTO_REPLACE_DB_USERNAME" => "u1" , 
-        "AUTO_REPLACE_DB_PASSWORD"  => "passkey" 
-    );
-    
+        "database_username"     => "u1" , 
+        "database_password"     => "passkey" ,
+        "database_name"         => "db 1" 
+    );    
  
     $x = yaml_replace( $arr ,  $y );
 
 
     $a = yaml_load_file(  $x );
 
-    print_r( $a );
+    print_r( $a["database"]  );
 
  
     
