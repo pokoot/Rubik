@@ -2,7 +2,8 @@
 # The humans responsible & technology colophon
 
 # AUTHOR
-    Harold Kim Cantil
+   
+    Harold Kim Cantil <pokoot.com>
 
 # THANKS
  
