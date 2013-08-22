@@ -1,0 +1,15 @@
+# Localhost configuration file
+
+DATABASE
+    host: localhost
+    username: 
+    password: 
+    name: 
+
+SITE
+    name
+    description
+
+GENERAL
+    maintenance: false  
+
