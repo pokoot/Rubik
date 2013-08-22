@@ -1,15 +1,14 @@
-# localhost configuration file
+# local machine configuration file
 
 database:
-    host: localhost
-    username: %database_username%
-    password: %database_password%
-    name: %database_name%
+    host: 
+    username:
+    password:
+    name: 
 
-site:
-    name: Test
-    description: Test CMS
 
-general:
+admin:
     maintenance: false  
+    debug: true
+    landing_module: /history
 

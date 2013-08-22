@@ -1,0 +1,8 @@
+framework:
+    environment: localhost
+
+site:
+    name: 
+    description: 
+    domain: 
+    

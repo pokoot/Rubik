@@ -47,17 +47,15 @@ if( !function_exists('yaml_load_file') ){
 */
 if( !function_exists( "yaml_replace" ) ){
     
-    function yaml_replace( $arr , $yaml , $pad = "%" ){
+    function yaml_replace( $arr , $yaml , $pad = "%" ){ 
 
         $search = array();
         $replace = array();
         foreach( $arr AS $key => $value ){
 
             if( is_string( $value ) ){     
-
                 
                 $search[]   = $pad . $key . $pad;
-                
 
                 $replace[]  = nl2br( "{$value}" );
             }
