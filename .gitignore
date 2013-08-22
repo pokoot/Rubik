@@ -1,0 +1,13 @@
+# USER SPECIFIC FILES
+
+/application/temp
+
+# OS GENERATED FILES
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
