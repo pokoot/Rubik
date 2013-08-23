@@ -1,5 +1,7 @@
 <?php 
 
+if ( !defined('BASE_PATH')) exit('No direct script access allowed');
+
 /** 
   * Spyc -- A Simple PHP YAML Class
    * @version 0.5
