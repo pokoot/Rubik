@@ -1,4 +1,4 @@
-<?php  
+<?php if ( !defined('BASE_PATH')) exit('No direct script access allowed.'); 
 
 /**
  * Parses yaml string to an array. 
@@ -9,7 +9,7 @@
  */
 if(!function_exists('yaml_load_string')) {
     function yaml_load_string ($string) {
-        return Spyc::YAMLLoadString($string);
+        return Library\Spyc::YAMLLoadString($string);
     }
 }
 
@@ -23,7 +23,7 @@ if(!function_exists('yaml_load_string')) {
  */
 if( !function_exists('yaml_load_file') ){  
     function yaml_load_file ($file) {
-        return Spyc::YAMLLoad($file);
+        return Library\Spyc::YAMLLoad($file);        
     }
 }
 

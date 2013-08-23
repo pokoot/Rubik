@@ -1,6 +1,8 @@
 <?php 
 
-if ( !defined('BASE_PATH')) exit('No direct script access allowed');
+namespace Library;
+
+if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 /** 
   * Spyc -- A Simple PHP YAML Class
@@ -89,7 +91,7 @@ class Spyc {
  * @param string $input
  * @return array
  */
-  public function load ($input) {
+  public function load ($input) {      
     return $this->__loadString($input);
   }
 
@@ -379,6 +381,7 @@ class Spyc {
   }
 
   private function __loadString($input) {
+      
     $Source = $this->loadFromString($input);
     return $this->loadWithSource($Source);
   }

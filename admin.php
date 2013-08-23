@@ -18,12 +18,16 @@
 
     
     require_once "./system/core/bootstrap.php";    
+    require_once "./system/core/config.php";    
 
+  
+    
+ 
 
-    //include_once "./system/helper/yaml.php";
-    //include_once "./system/library/spyc.php";    
+    
     
 
+ 
 
 
 
