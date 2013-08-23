@@ -1,13 +1,22 @@
-<?php  if ( !defined('BASE_PATH')) exit('No direct script access allowed');
+<?php   if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
     /**
-     * Author: Kim
-     * License: Cellcity
+     * Author: Kim     
      */
-     
+    
+
+    
+    $db             = $CONFIG->item( "database" );
+
+    $db_host        = $db["host"];
+    $db_username    = $db["username"];
+    $db_password    = $db["password"];
+    $db_name        = $db["name"];
+
+
 
     // open a connection to a mysql server    	
-    $db_conn = mysql_connect( DB_SERVER , DB_USERNAME , DB_PASSWORD );
+    $db_conn = mysql_connect( $db_host , $db_username , $db_password );
 
     if( !$db_conn ){
         die('could not connect :'.mysql_error() );
@@ -15,10 +24,10 @@
     } 
 
     // select a mysql database   
-    $db_selected = mysql_select_db( DB_DATABASE , $db_conn );
+    $db_selected = mysql_select_db( $db_name , $db_conn );
 
-    if(!$db_selected){
-        die ('Cant use the '.$database.' : '.mysql_error() );
+    if( !$db_selected ){
+        die ('Cant use the '. $database . ' : ' . mysql_error() );
         exit();
     }
 
