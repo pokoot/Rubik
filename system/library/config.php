@@ -84,8 +84,7 @@ class Config{
      * @access public     
      *
      */
-    public function search( $search , $level = 0 , $array = null ){               
- 
+    public function search( $search , $level = 0 , $array = null ){                
 
         if( $level == 0 ){        
             $array = $this->settings;

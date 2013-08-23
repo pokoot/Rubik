@@ -16,4 +16,6 @@
  
     $CONFIG->load( $path , $merge = true ); 
 
+    $CONFIG->load( APPLICATION_PATH . "config/menu.yml"  , $merge = true ); 
+ 
 ?>
