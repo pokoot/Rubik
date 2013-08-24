@@ -1,15 +1,20 @@
-<?php  if ( !defined('BASE_PATH')) exit('No direct script access allowed');
+<?php  
 
+namespace Library;
+
+if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
+
+ 
 /**
  * Sql - mysql wrapper class  
  *
  * TODO:: get_type change to is_array is_string , decpreciated commands.
- *
- * @uses Database
+ * 
+ * @uses Db
  * @package 
  * @version $id$
- * @author Kim
- * @license Cellcity
+ * @author Harold Kim Cantil 
+ * @license http://pokoot.com/license.txt
  */
 class Sql extends Db {
      
@@ -166,8 +171,12 @@ $query";
 
 
 
+   
     /**
-     * fetch a results row as an associative array 
+     * fetch a results row as an associative array  
+     * 
+     * @access public
+     * @param string $query 
      * @return array - associative array
      */
     public function fetch_datas( $query = '' ){
@@ -198,8 +207,11 @@ $query";
 
 
     /**
-     * fetch 1 data     
-     * Returns an associative array
+     * Fetch 1 data 
+     * 
+     * @access public
+     * @param string $query 
+     * @return void
      */
     public function fetch_data( $query = '' ){
 
@@ -459,4 +471,5 @@ $query";
     }
 
 }
+
 ?>

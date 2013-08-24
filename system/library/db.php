@@ -2,7 +2,7 @@
 
 namespace Library;
 
-if ( ! defined("BASE_PATH")) exit("No direct script access allowed.");
+if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
 
 
 /**
@@ -118,7 +118,7 @@ class Db {
      * @access public
      * @return string - the sql query string
      */
-    function get_query(){
+    public function get_query(){
         //return htmlentities ( $this->query );
         return $this->query;
     }
@@ -133,7 +133,7 @@ class Db {
      * @access public
      * @return void
      */
-    function set_table( $table ){
+    public function set_table( $table ){
         $this->table = ( STRING ) $table;
     }        
 
@@ -146,7 +146,7 @@ class Db {
      * @access public
      * @return string - the mysql table name
      */
-    function get_table(){
+    public function get_table(){
         return $this->table;
     }        
 
@@ -159,7 +159,7 @@ class Db {
      * @access public
      * @return boolean
      */
-    function has_error(){
+    public function has_error(){
         return $this->error;
     }
 
@@ -173,7 +173,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function query( $query ){
+    public function query( $query ){
         $this->query = $query;
         $this->result = mysql_query( $query );            
         $this->error = FALSE;
@@ -198,7 +198,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function create( $name ){
+    public function create( $name ){
         $this->query = "CREATE DATABASE $name ";
         return $this->query ( $this->query );
     }
@@ -214,7 +214,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function drop( $name ){
+    public function drop( $name ){
         $this->query = "DROP DATABASE IF EXISTS $name ";
         return $this->query ( $this->query );
     }        
@@ -229,7 +229,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function rename( $newName ) {
+    public function rename( $newName ) {
         $this->query = "RENAME TABLE " . $this->table . " TO $newName ";
         return $this->query ( $this->query );
     }
@@ -243,7 +243,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function truncate(){
+    public function truncate(){
         $this->query = "TRUNCATE TABLE ".$this->table;
         return $this->query ( $this->query );
     }
@@ -257,7 +257,7 @@ class Db {
      * @access public
      * @return string - the table creation string
      */
-    function get_create_table(){
+    public function get_create_table(){
         $this->query = "SHOW CREATE TABLE " . $this->table ;
         return $this->query ( $this->query );
     }        
@@ -271,7 +271,7 @@ class Db {
      * @access public
      * @return mixed - the resource link identifier
      */
-    function optimize(){
+    public function optimize(){
         $this->query = "OPTIMIZE TABLE " . $this->table;
         return $this->query( $this->query );
     }
@@ -285,7 +285,7 @@ class Db {
      * @access public
      * @return string - the field information
      */
-    function get_fields(){
+    public function get_fields(){
         $this->query = "SHOW FIELDS FROM " . $this->table; 
         return $this->query( $this->query );
     }
@@ -299,7 +299,7 @@ class Db {
      * @access public
      * @return string - the databases information
      */
-    function get_databases(){
+    public function get_databases(){
         $this->query = "SHOW DATABASES";
         return $this->query( $this->query );
     }
@@ -313,7 +313,7 @@ class Db {
      * @access public
      * @return string - the tables names
      */
-    function get_tables(){
+    public function get_tables(){
         $this->query = "SHOW TABLES";
         return $this->query( $this->query );
     }
@@ -329,7 +329,7 @@ class Db {
      * @access public
      * @return mixed - the index information
      */
-    function get_keys(){
+    public function get_keys(){
         $this->query = "SHOW KEYS FROM " . $this->table ;
         return $this->query ( $this->query );
     }        
@@ -345,7 +345,7 @@ class Db {
      * @access public
      * @return mixed - the table information
      */
-    function get_columns(){
+    public function get_columns(){
         $this->query = "SHOW COLUMNS FROM  " . $this->table ;
         return $this->query ( $this->query );
     }
@@ -361,7 +361,7 @@ class Db {
      * @access public
      * @return mixed - the table informtaion
      */
-    function describe(){
+    public function describe(){
         $this->query = "DESCRIBE " . $this->table ;
         return $this->query ( $this->query );
     }
@@ -375,7 +375,7 @@ class Db {
      * @access public
      * @return mixed - the running threads
      */
-    function get_process(){
+    public function get_process(){
         $this->query = "SHOW FULL PROCESSLIST";
         return $this->query ( $this->query );
     }
@@ -390,7 +390,7 @@ class Db {
      * @access public
      * @return mixed - status information
      */
-    function status( $status = "%" ) {
+    public function status( $status = "%" ) {
         $this->query = "SHOW STATUS LIKE '$status'";
         return $this->query ( $this->query );
     }
@@ -403,7 +403,7 @@ class Db {
      * @access public
      * @return mixed - table analysis information
      */
-    function analyze(){
+    public function analyze(){
         $this->query = "ANALYZE TABLE " . $this->table ;
         return $this->query ( $this->query );
     }
@@ -416,7 +416,7 @@ class Db {
      * @access public
      * @return mixed - table status
      */
-    function check(){
+    public function check(){
         $this->query = "CHECK TABLE " . $this->table ; 
         return $this->query ( $this->query );
     }
@@ -429,7 +429,7 @@ class Db {
      * @access public
      * @return mixed - table status
      */
-    function check_all(){
+    public function check_all(){
         $this->query = "CHECK TABLE " . $this->table . " QUICK FAST MEDIUM EXTENDED CHANGED ";
         return $this->query ( $this->query );
     }
@@ -442,7 +442,7 @@ class Db {
      * @access public
      * @return mixed - the table status information
      */
-    function check_sum(){
+    public function check_sum(){
         $this->query = "CHECKSUM TABLE " . $this->table . " EXTENDED " ;
         return $this->query ( $this->query );
     }
@@ -455,7 +455,7 @@ class Db {
      * @access public
      * @return mixed - the repair status
      */
-    function repair(){
+    public function repair(){
         $this->query = "REPAIR TABLE " . $this->table . " QUICK EXTENDED" ;
         return $this->query ( $this->query );
     }
@@ -468,7 +468,7 @@ class Db {
      * @access public
      * @return string - the mysql version 
      */
-    function version(){
+    public function version(){
         $this->query = "SELECT @@VERSION" ;
         return $this->query ( $this->query );
     }
@@ -481,7 +481,7 @@ class Db {
      * @access public
      * @return void
      */
-    function close(){
+    public function close(){
         mysql_close();
     }
 
