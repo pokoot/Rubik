@@ -4,6 +4,11 @@
     require_once SYSTEM_PATH . "library/spyc.php";    
     require_once SYSTEM_PATH . "library/config.php";     
 
+    /**
+     * Loads the configuration file
+     */
+
+
     $CONFIG = new Library\Config();
 
     $CONFIG->load( APPLICATION_PATH . "config/config.yml" , true );
@@ -17,5 +22,11 @@
     $CONFIG->load( $path , $merge = true ); 
 
     $CONFIG->load( APPLICATION_PATH . "config/menu.yml"  , $merge = true ); 
+
+
+    /**
+     * Load the rest of the file 
+     */
+
  
 ?>
