@@ -13,6 +13,7 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  * @author Kim 
  * @license Cellcity
  */
+
 class Config{
 
     /**
