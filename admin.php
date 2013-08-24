@@ -20,6 +20,4 @@
     require_once "./system/core/config.php";    
     require_once "./system/core/database.php";    
 
-  
-
 ?>
