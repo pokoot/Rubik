@@ -16,16 +16,10 @@
     @session_destroy();
     session_start();
 
-    
     require_once "./system/core/bootstrap.php";    
     require_once "./system/core/config.php";    
     require_once "./system/core/database.php";    
 
   
-    
-
- 
-
-
 
 ?>

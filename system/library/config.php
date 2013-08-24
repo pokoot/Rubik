@@ -68,7 +68,7 @@ class Config{
      * @param mixed $key 
      * @return void
      */
-    public function item( $key ){
+    public function get( $key ){
         return $this->settings[ $key ];
     }
 
@@ -85,7 +85,7 @@ class Config{
      * @access public     
      *
      */
-    public function search( $search , $level = 0 , $array = null ){                
+    public function item( $search , $level = 0 , $array = null ){                
 
         if( $level == 0 ){        
             $array = $this->settings;
@@ -98,7 +98,7 @@ class Config{
             if( $search[ $level] == $k ) {     
 
                 if( is_array( $v )){                    
-                    return $this->search( $search  , ++$level , $v );                
+                    return $this->item( $search  , ++$level , $v );                
                 }else{                 
                     return $v;              
                 }

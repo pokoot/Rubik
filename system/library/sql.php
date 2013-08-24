@@ -8,7 +8,7 @@ if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
 /**
  * Sql - mysql wrapper class  
  *
- * TODO:: get_type change to is_array is_string , decpreciated commands.
+ * TODO:: gettype change to is_array is_string , decpreciated commands.
  * 
  * @uses Db
  * @package 

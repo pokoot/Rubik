@@ -9,7 +9,7 @@
     $CONFIG->load( APPLICATION_PATH . "config/config.yml" , true );
   
 
-    $environment = $CONFIG->search( array( "framework" , "environment" ) );
+    $environment = $CONFIG->item( array( "framework" , "environment" ) );
  
 
     $path = APPLICATION_PATH . "config/" .  $environment . ".yml" ;
