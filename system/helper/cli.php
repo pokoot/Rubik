@@ -30,7 +30,6 @@ if( !function_exists("writeln")){
 
             if( $entry['function'] ){
                 $file   = basename( $entry['file'] );
-
                 $line   = str_pad( $entry['line'] , 4 , "0" , STR_PAD_LEFT );
 
                 //echo "\033[0m";
