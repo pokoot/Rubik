@@ -1,5 +1,8 @@
 # local machine configuration file
 
+general:
+    timezone: Asia/Singapore
+
 database:
     host: localhost 
     username: root
@@ -8,13 +11,20 @@ database:
 
 
 admin:
-    maintenance: false  
+    maintenance: false
     debug: true
     landing_module: /history
-    timezone: Asia/Singapore
+    timezone: 
 
 
-restriction:
-    allow: all
-    disallow: 
+www:
+    maintenance: false
+    debug: false
+
+
+cli:
+
+
+api:
+
 

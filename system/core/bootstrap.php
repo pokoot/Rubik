@@ -1,7 +1,6 @@
 <?php
 
-    $debug_bootstrap        = true;
-    $debug_loader           = true;
+    $debug_init             = false;    
 	$system_folder          = "system";
     $application_folder     = "application";
 
@@ -76,7 +75,7 @@
      * Debug and prints the output 
      */
 
-    if( $debug_bootstrap ){            
+    if( $debug_init ){            
         print "<br/> BASE_PATH = " . BASE_PATH;
         print "<br/> SYSTEM_PATH = " . SYSTEM_PATH;
         print "<br/> APPLICATION_PATH = " . APPLICATION_PATH;

@@ -19,4 +19,26 @@
     require_once "./system/core/bootstrap.php";    
     require_once "./system/core/loader.php";    
 
+
+    // IP RESTRICTION
+
+
+
+
+
+
+    $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );
+    
+    if( $maintenance === true ){
+
+        require_once SYSTEM_PATH . 'view/maintenance.php';
+        exit();
+
+    }else{
+
+        $app = new Library\Admin();
+        $app->index();
+
+    }
+
 ?>
