@@ -13,3 +13,8 @@ admin:
     landing_module: /history
     timezone: Asia/Singapore
 
+
+restriction:
+    allow: all
+    disallow: 
+

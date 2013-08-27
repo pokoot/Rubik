@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * Author: Harold Kim Cantil 
+     */    
+
     Header("Cache-Control: must-revalidate");
     Header("Expires: " . gmdate( "D, d M Y H:i:s", time() +  60 * 60 * 24 * 3 ) . " GMT");
 
