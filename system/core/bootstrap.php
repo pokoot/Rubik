@@ -1,6 +1,6 @@
 <?php
 
-    $debug_bootstrap        = true;
+    $debug_bootstrap        = false;
 	$system_folder          = "system";
     $application_folder     = "application";
 

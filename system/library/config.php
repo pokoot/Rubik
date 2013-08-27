@@ -6,7 +6,12 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 
 /**
+ * A Global configuration class
+ *
  * Parse the .yml file configuration
+ *
+ * Ex.
+ *  $CONFIG->set( ... );
  * 
  * @package 
  * @version $id$
@@ -35,6 +40,54 @@ class Config{
     }
 
 
+    /**
+     * Set a temporary variable. 
+     * Works like a global constant
+     * 
+     * @access public
+     * @param mixed $key 
+     * @param mixed $value 
+     * @return void
+     */
+    public function set( $key , $value = null ){
+        $this->$key = $value;
+    }
+
+
+    /**
+     * Get the temporary variable
+     *
+     * @access public
+     * @param mixed $key
+     * @return mixed  
+     */
+    public function get( $key ){        
+        return $this->$key;
+    }
+
+
+    /**
+     * Return an item on the settings array 
+     * 
+     * @access public
+     * @param mixed $key 
+     * @return void
+     */
+    public function get_setting( $key ){
+        return $this->settings[ $key ];
+    }
+
+
+
+    /**
+     * Retrieves the settings array that are loaded on the .yml file
+     * 
+     * @access public
+     * @return void
+     */
+    public function get_settings(){
+       return $this->settings;    
+    }
 
 
     /**
@@ -58,21 +111,6 @@ class Config{
         return $this;
     }
 
-
-
-
-    /**
-     * Return an item on the settings array 
-     * 
-     * @access public
-     * @param mixed $key 
-     * @return void
-     */
-    public function get( $key ){
-        return $this->settings[ $key ];
-    }
-
-
  
 
   
@@ -85,7 +123,7 @@ class Config{
      * @access public     
      *
      */
-    public function item( $search , $level = 0 , $array = null ){                
+    public function search( $search , $level = 0 , $array = null ){                
 
         if( $level == 0 ){        
             $array = $this->settings;
@@ -98,7 +136,7 @@ class Config{
             if( $search[ $level] == $k ) {     
 
                 if( is_array( $v )){                    
-                    return $this->item( $search  , ++$level , $v );                
+                    return $this->search( $search  , ++$level , $v );                
                 }else{                 
                     return $v;              
                 }
@@ -110,19 +148,7 @@ class Config{
         return '';
     }
 
-      
 
-
-    /**
-     * Retrieves the settings array
-     * 
-     * @access public
-     * @return void
-     */
-    public function show(){
-       return $this->settings;
-    
-    }
 
 
 }
