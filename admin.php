@@ -20,22 +20,23 @@
     require_once "./system/core/loader.php";    
 
 
-    // IP RESTRICTION
+    // TODO :: IP RESTRICTION
 
+ 
 
+    $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );    
 
-
-
-
-    $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );
+    define( "MODULE" , get( "module" ) );
     
-    if( $maintenance === true ){
+    if( $maintenance === true && MODULE == "login" ){
 
         require_once SYSTEM_PATH . 'view/maintenance.php';
         exit();
 
     }else{
 
+        // TODO :: Every pages will have some sort of notice.
+        
         $app = new Library\Admin();
         $app->index();
 
