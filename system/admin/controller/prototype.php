@@ -1,8 +1,8 @@
-<?php
+<?php 
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
-class Prototype extends Admin implements Aeds{ 
+class Prototype extends Admin implements Aeds, Action{ 
 
     protected $config = array( "prototype" );
     protected $model = array( "prototype" );
@@ -13,7 +13,9 @@ class Prototype extends Admin implements Aeds{
     protected $vendor;
 
     public function __construct(){
-        print "<Br/> here ";
+    }
+
+    public function request(){    
     }
 
     public function add(){
@@ -28,9 +30,10 @@ class Prototype extends Admin implements Aeds{
     public function save(){
     }
 
-
+    public function request(){
+        print "<Br/> from prototype.php";
+    }
     public function index(){
-        print "<br/> testing ... ";
     }
   
 }

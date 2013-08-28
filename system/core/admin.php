@@ -26,10 +26,35 @@ class Admin{
     protected $config;
     protected $language;
 
-   
 
+    private function load_vendor(){
+    
+    }
+
+    private function load_library(){
+    
+    }
+
+    // todo
+    private function load_model(){
+    
+    }
+
+    private function load_config(){
+    }
+
+
+    public function request(){
+        print "<Br/> from admin.php";
+    } 
+
+    /**
+     * First call, acts as a controller of the  
+     * 
+     * @access public
+     * @return void
+     */
     public function index(){
-
 
         $file = SYSTEM_PATH . "admin/controller/" . MODULE . ".php";
 
@@ -53,9 +78,8 @@ class Admin{
         $controller = new $module();
         $controller->index();
 
-        //print $controller->model;
 
-        
+        $this->load_config();
 
         
     }

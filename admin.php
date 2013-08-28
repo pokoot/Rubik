@@ -21,6 +21,7 @@
     require_once "./system/core/loader.php";  
     require_once "./system/core/admin.php";    
     require_once "./system/core/aeds.php";    
+    require_once "./system/core/action.php";    
 
 
     // TODO :: IP RESTRICTION 
@@ -29,9 +30,9 @@
 
     define( "MODULE" , get( "module" ) );
     
-    if( $maintenance === true && MODULE == "login" ){
+    if( $maintenance === true && MODULE === "login" ){
 
-        require_once SYSTEM_PATH . 'view/maintenance.php';
+        require_once SYSTEM_PATH . 'admin/view/maintenance.php';
         exit();
 
     }else{
