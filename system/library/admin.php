@@ -33,7 +33,7 @@ class Admin{
     public function index(){
 
 
-        $file = SYSTEM_PATH . "controller/" . MODULE . ".php";
+        $file = SYSTEM_PATH . "admin/controller/" . MODULE . ".php";
 
         if( !file_exists( $file ) ){
             $file = APPLICATION_PATH . "admin/controller/" . MODULE . ".php" ;
@@ -48,6 +48,14 @@ class Admin{
         if( !class_exists( MODULE ) ){
             die( "Unable to load module. The class already exist. Please check for possible class duplicates" );
         }
+
+
+        $module = MODULE;
+
+        $controller = new $module();
+        $controller->test();
+
+        //print $controller->model;
 
         
 
