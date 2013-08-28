@@ -17,12 +17,13 @@
     session_start();
 
     require_once "./system/core/bootstrap.php";    
-    require_once "./system/core/loader.php";    
+    require_once "./system/core/common.php";    
+    require_once "./system/core/loader.php";  
+    require_once "./system/core/admin.php";    
+    require_once "./system/core/aeds.php";    
 
 
-    // TODO :: IP RESTRICTION
-
- 
+    // TODO :: IP RESTRICTION 
 
     $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );    
 
@@ -37,7 +38,7 @@
 
         // TODO :: Every pages will have some sort of notice.
         
-        $app = new Library\Admin();
+        $app = new Admin();
         $app->index();
 
     }

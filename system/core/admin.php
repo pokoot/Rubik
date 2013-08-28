@@ -1,6 +1,4 @@
-<?php
-
-namespace Library;
+<?php 
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
@@ -15,18 +13,18 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  */
 class Admin{
 
-    public $model;
-    public $css;
-    public $js;
+    protected $model;
+    protected $css;
+    protected $js;
     
-    public $vendor;
-    public $helper;
+    protected $vendor;
+    protected $helper;
 
 
-    public $request;
-    public $yaml;
-    public $config;
-    public $language;
+    protected $request;
+    protected $yaml;
+    protected $config;
+    protected $language;
 
    
 
@@ -53,7 +51,7 @@ class Admin{
         $module = MODULE;
 
         $controller = new $module();
-        $controller->test();
+        $controller->index();
 
         //print $controller->model;
 
