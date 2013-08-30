@@ -36,10 +36,43 @@ class Admin{
     
     }
 
+
+    /**
+     * Load the application helper files 
+     * 
+     * @access private
+     * @param mixed $controller 
+     * @return void
+     */
     private function load_helper( $controller ){
+        
+        foreach( $controller->helper AS $f ){
+
+            $file = APPLICATION_PATH . "helper/" . $f . ".php"; 
+
+            if( !file_exists( $file ) ){
+                die( "Unable to load helper file. Please check \"$f\" helper file. ");
+            }
+
+            debug_init( "loading helper file = $file " );
+
+            require_once $file; 
+
+        }
+
+              
+        
+ 
     }
 
     
+    /**
+     * Include the model class and make it as an object property. 
+     * 
+     * @access private
+     * @param mixed $controller 
+     * @return void
+     */
     private function load_model( $controller ){
  
         foreach( $controller->model AS $f ){
@@ -71,12 +104,14 @@ class Admin{
 
         }
 
-    }
- 
+    } 
 
 
     /**
      * Load the .yml configuration file to the object property $controller->yaml 
+     *
+     * @access private
+     * @param mixed $controller 
      */
     private function load_config( $controller ) {        
 
