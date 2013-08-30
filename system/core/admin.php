@@ -56,29 +56,23 @@ class Admin{
 
             debug_init( "loading model file = $file " );
 
-            require_once $file;
+            require_once $file; 
 
-            $this->instantiate_model( $controller , $f );
+
+            // Dynamically instantiate the namespace Model
+            
+            $class_name = "Model\\$f";
+    
+            $model = new $class_name();
+
+            $property_name = $model->name;
+
+            $controller->$property_name = $model;
 
         }
 
     }
-
-
-    private function instantiate_model( $controller , $model ){
-
-        $class_name = "Model\\$model";
-    
-        $m = new $class_name();
-
-        $name = $m->name;
  
-        $controller->$name = $m;
-
-        return $m;
-    }
-
-
 
 
     /**

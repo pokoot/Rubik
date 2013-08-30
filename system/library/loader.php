@@ -15,7 +15,6 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  */
 class Loader{
 
-
     /**
      * Include file base on array
      *
@@ -30,8 +29,6 @@ class Loader{
     public function add( $files ){
 
         $files = func_get_args();
-
-        print_r( $files );
 
         foreach( $files AS $file ){            
             debug_init( $file );

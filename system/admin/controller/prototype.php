@@ -34,6 +34,10 @@ class Prototype extends Admin implements Action{
         $this->request();
         $this->process();
 
+
+     
+
+
       
         $data = array(
             "title"     => "Prototype" , 

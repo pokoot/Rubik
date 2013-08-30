@@ -11,7 +11,7 @@
 
     //ini_set( "session.cookie_secure" , "On" ); // VIA SSL?
     ini_set( "session.cookie_httponly" , "On" );
-
+    
     @session_regenerate_id(false);
     @session_destroy();
     session_start();
@@ -20,11 +20,9 @@
     
     require_once SYSTEM_PATH . "core/common.php";    
     require_once SYSTEM_PATH . "core/loader.php";  
-    require_once SYSTEM_PATH . "core/action.php";    
     require_once SYSTEM_PATH . "core/admin.php";    
 
- //   require_once SYSTEM_PATH . "core/model.php";    
-    
+    require_once SYSTEM_PATH . "library/action.php";    
     
     
 
