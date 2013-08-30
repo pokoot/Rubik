@@ -204,9 +204,9 @@ class Admin{
 
 
         $this->load_config( $controller );
-        $this->load_vendor( $controller );
         $this->load_helper( $controller );
         $this->load_library( $controller );
+        $this->load_vendor( $controller );
         $this->load_model( $controller );
 
         //print_r( $controller->yaml );

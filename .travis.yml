@@ -1,4 +1,8 @@
-language: php
+languages: 
+    php
+    html
+    css
+    javascript
 
 php:
     - 5.3.8
