@@ -37,16 +37,84 @@ class Admin{
 
     // todo
     private function load_model(){
-    
     }
 
     private function load_config(){
     }
 
+   
+    /**
+     * Tells whether it is add, edit, delete and save ... 
+     * 
+     * @access public
+     * @return void
+     */
+    public function process(){
 
-    public function request(){
-        print "<Br/> from admin.php";
-    } 
+        $action = strtoupper( post( "action" ) );
+
+        switch( $action ){
+
+            case "DELETE" :
+                $this->delete();
+                $this->request["action"] = "LISTING";
+                break;
+
+            case "ADD" :
+                $this->add();
+                break;
+
+            case "EDIT" :
+                $this->edit();
+                break;
+
+            case "SAVE" :
+
+                $this->request["action"] = "LISTING";
+
+                if( f5() ){
+                    break;
+                }
+
+                $this->save();
+              
+                if( isset( $this->request["required"] ) ){
+                    $this->request["action"] = ( $this->request["entry_id"] ) ? "EDIT" : "ADD" ;
+                }
+
+                break;
+            default:
+                break;
+        }
+
+       
+    }
+
+
+    /**
+     * Load the template html view file 
+     * 
+     * @access public
+     * @param string $html 
+     * @param array $param 
+     * @return void
+     */
+    public function view( $param  = array() , $template = "default" ){
+
+        if( is_array( $param ) && count( $param ) > 0){
+            extract( $param , EXTR_PREFIX_SAME, "duplicate" );
+        }
+
+        $file = SYSTEM_PATH . "admin/view/" . $template . ".php";
+
+        if( !file_exists( $file ) ){
+            die( "Unable to load view. Please check the view file if it does exist. ");
+        }
+
+        require_once $file;    
+    
+    }
+
 
     /**
      * First call, acts as a controller of the  

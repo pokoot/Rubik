@@ -1,6 +1,7 @@
 # local machine configuration file
 
 general:
+    application_name: Rubik
     timezone: Asia/Singapore
 
 database:
@@ -16,15 +17,11 @@ admin:
     landing_module: /history
 
 
-
 www:
     maintenance: false
     debug: false
 
-
 cli:
 
-
 api:
-
 

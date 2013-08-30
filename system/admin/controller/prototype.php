@@ -15,7 +15,8 @@ class Prototype extends Admin implements Aeds, Action{
     public function __construct(){
     }
 
-    public function request(){    
+    public function request(){   
+        
     }
 
     public function add(){
@@ -29,11 +30,19 @@ class Prototype extends Admin implements Aeds, Action{
 
     public function save(){
     }
+ 
+    public function index(){        
+        $this->request();
+        $this->process();
 
-    public function request(){
-        print "<Br/> from prototype.php";
-    }
-    public function index(){
+        $data = array(
+            "title"     => "Prototype" , 
+            "request"   => $this->request             
+        );
+
+        $this->view( $data , 'default' , $this );
+
+
     }
   
 }

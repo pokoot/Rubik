@@ -74,8 +74,13 @@ if( !function_exists('html_h')){
  * @return void
  */
 if( !function_exists('html_title')){    
-	function html_title( $title ){
-		return "<title>" . ucwords( strtolower( $title ) ) . " | " . APPLICATION_LABEL . "</title>";
+    function html_title( $title ){
+
+        GLOBAL $CONFIG;
+
+        $application_name = $CONFIG->search( array( "general" , "application_name" ) );
+
+		return "<title>" . ucwords( strtolower( $title ) ) . " | " . $application_name . "</title>";
 	}
 }
 
