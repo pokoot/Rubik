@@ -5,7 +5,7 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 class Prototype extends Admin implements Action{ 
 
     protected $config = array( "prototype" );
-    protected $model = array( "prototype" , "account" );
+    protected $model = array( "prototype" );
     protected $helper;
     protected $library;
     protected $js;
@@ -15,7 +15,7 @@ class Prototype extends Admin implements Action{
     public function __construct(){
     }
 
-    public function request(){           
+    public function request(){        
     }
 
     public function add(){
@@ -34,16 +34,13 @@ class Prototype extends Admin implements Action{
         $this->request();
         $this->process();
 
-        $this->Prototype->all();
-        $this->Account->all();
-
+      
         $data = array(
             "title"     => "Prototype" , 
             "request"   => $this->request             
         );
 
         $this->view( $data );
-
 
     }
   

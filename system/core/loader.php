@@ -9,7 +9,7 @@
      * $CONFIG global object
      */
 
-    $CONFIG = new Library\Config();
+    $CONFIG = new \Library\Config();
   
     // set the debug flag
     if( isset($_GET["debug"] ) ){ $CONFIG->set( ( $_GET["debug"] == "true" ) ? true : false ); } 
@@ -27,11 +27,10 @@
      * Init the $LOADER global object
      */
 
-    $LOADER = new Library\Loader();
+    $LOADER = new \Library\Loader();
 
     $LOADER->multiple_require( SYSTEM_PATH . 'library/*.php'  );
     $LOADER->multiple_require( SYSTEM_PATH . 'helper/*.php'  );
-    //$LOADER->multiple_require( SYSTEM_PATH . 'model/*.php'  );    
  
     
 ?>
