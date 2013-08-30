@@ -4,12 +4,12 @@ namespace Model;
 
 if ( ! defined('BASE_PATH')) exit('No direct script access allowed.');
 
-class Prototype extends \Library\Model{
+class Account extends \Library\Model{
 
-    public $name = "Prototype";
+    public $name = "Account";
 
     public function all(){
-        print "<br/> holy cow ";
+        print "<br/> holy cow macaroni";
     }
     
 }

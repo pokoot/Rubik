@@ -58,11 +58,32 @@ class Admin{
 
             require_once $file;
 
+            $this->instantiate_model( $controller , $f );
+
         }
 
     }
 
 
+    private function instantiate_model( $controller , $model ){
+
+        $class_name = "Model\\$model";
+    
+        $m = new $class_name();
+
+        $name = $m->name;
+ 
+        $controller->$name = $m;
+
+        return $m;
+    }
+
+
+
+
+    /**
+     * Load the .yml configuration file to the object property $controller->yaml 
+     */
     private function load_config( $controller ) {        
 
         $file = $controller->config;

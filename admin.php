@@ -23,7 +23,7 @@
     require_once SYSTEM_PATH . "core/action.php";    
     require_once SYSTEM_PATH . "core/admin.php";    
 
-    require_once SYSTEM_PATH . "core/model.php";    
+ //   require_once SYSTEM_PATH . "core/model.php";    
     
     
     
@@ -37,7 +37,7 @@
     
     if( $maintenance === true && MODULE === "login" ){
 
-        require_once SYSTEM_PATH . 'admin/view/maintenance.php';
+            require_once SYSTEM_PATH . 'admin/view/manbintenance.php';
         exit();
 
     }else{

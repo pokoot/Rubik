@@ -1,8 +1,10 @@
 <?php  
 
+namespace Library;
+
 if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
 
-
+ 
 /**
  * Extends the db functions
  * 
@@ -14,7 +16,7 @@ if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
  */
 class Model {
 
-    public function model_test(){
+    public function get_all(){
     
     }
 
