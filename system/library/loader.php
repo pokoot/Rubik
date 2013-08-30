@@ -15,14 +15,6 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  */
 class Loader{
 
-    /**
-     * A flag for printing the included file 
-     * 
-     * @var mixed
-     * @access public
-     */
-    public $debug = false;
-
 
     /**
      * Include file base on array
@@ -41,8 +33,8 @@ class Loader{
 
         print_r( $files );
 
-        foreach( $files AS $file ){
-            if( $this->debug ) print "<Br/> $file ";
+        foreach( $files AS $file ){            
+            debug_init( $file );
             require_once $file;
         }
     
@@ -58,8 +50,8 @@ class Loader{
      */
     public function multiple_require( $path ){
 
-        foreach( glob( $path ) AS $file ){        
-            if( $this->debug ) print "<Br/> $file ";
+        foreach( glob( $path ) AS $file ){                    
+            debug_init( $file );
             require_once $file;        
         }
 
@@ -75,8 +67,8 @@ class Loader{
      */
     public function multiple_include( $path ){
 
-        foreach( glob( $path ) AS $file ){        
-            if( $this->debug ) print "<Br/> $file ";
+        foreach( glob( $path ) AS $file ){                    
+            debug_init( $file );
             include_once $file;        
         }
 

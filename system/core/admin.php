@@ -16,30 +16,85 @@ class Admin{
     protected $model;
     protected $css;
     protected $js;
-    
     protected $vendor;
     protected $helper;
-
+    protected $library;
 
     protected $request;
     protected $yaml;
-    protected $config;
-    protected $language;
+
+    public function  __construct(){
+       
+    }
 
 
-    private function load_vendor(){
+    private function load_vendor( $controller ){
     
     }
 
-    private function load_library(){
+    private function load_library( $controller ){
     
     }
 
-    // todo
-    private function load_model(){
+    private function load_helper( $controller ){
     }
 
-    private function load_config(){
+    
+    private function load_model( $controller ){
+ 
+        foreach( $controller->model AS $f ){
+
+            $file = SYSTEM_PATH . "model/" . $f . ".php"; 
+             
+            if( !file_exists( $file ) ){
+                $file = APPLICATION_PATH . "model/" . $f . ".php" ;
+            }
+
+            if( !file_exists( $file ) ){
+                die( "Unable to load model file. Please check \"$f\" model class. ");
+            }
+
+            debug_init( "loading model file = $file " );
+
+            require_once $file;
+
+        }
+
+    }
+
+
+    private function load_config( $controller ) {        
+
+        $file = $controller->config;
+
+        if( count( $file  ) > 1 ){
+            die( 'Unable to proceed. Can only load 1 configuration file setting. Check controller code ... $this->config = array( "prototype" )' );
+        }
+
+        if( is_array( $file ) ){
+            $file = $file[0];
+        }
+
+        $file = SYSTEM_PATH . "admin/config/" . $file . ".yml"; 
+
+
+        if( !file_exists( $file ) ){
+            $file = APPLICATION_PATH . "admin/config/" . $file . ".yml" ;
+        }
+
+        if( !file_exists( $file ) ){
+            die( "Unable to load .yml configuration file. Please check your .yml configuration file if it does exist. ");
+        }
+
+
+        debug_init( "loading config file = $file " );
+
+        $yaml = file_get_contents( $file );
+
+        $controller->yaml = $yaml;
+
+ 
+        return $contoller;
     }
 
    
@@ -111,6 +166,8 @@ class Admin{
             die( "Unable to load view. Please check the view file if it does exist. ");
         }
 
+        debug_init( "loading view file =  $file " );
+
         require_once $file;    
     
     }
@@ -143,11 +200,20 @@ class Admin{
 
         $module = MODULE;
 
-        $controller = new $module();
+        $controller = new $module();     
+
+
+        $this->load_config( $controller );
+        $this->load_vendor( $controller );
+        $this->load_helper( $controller );
+        $this->load_library( $controller );
+        $this->load_model( $controller );
+
+        //print_r( $controller->yaml );
+
+
+
         $controller->index();
-
-
-        $this->load_config();
 
         
     }

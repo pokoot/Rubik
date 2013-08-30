@@ -61,4 +61,22 @@ if( !function_exists("__")){
     }
 
 }
+
+
+/**
+ *  
+ * 
+ * @access public
+ * @param mixed $message 
+ * @return void
+ */
+if( !function_exists( "trace" )){    
+    function debug_init( $message ){
+        GLOBAL $DEBUG_INIT;
+        if( $DEBUG_INIT == true ){
+            print "<Br/> $message";
+        }
+    }
+
+}
 ?>

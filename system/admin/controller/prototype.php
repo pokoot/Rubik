@@ -2,7 +2,7 @@
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
-class Prototype extends Admin implements Aeds, Action{ 
+class Prototype extends Admin implements Action{ 
 
     protected $config = array( "prototype" );
     protected $model = array( "prototype" );
@@ -15,8 +15,7 @@ class Prototype extends Admin implements Aeds, Action{
     public function __construct(){
     }
 
-    public function request(){   
-        
+    public function request(){           
     }
 
     public function add(){
@@ -40,7 +39,7 @@ class Prototype extends Admin implements Aeds, Action{
             "request"   => $this->request             
         );
 
-        $this->view( $data , 'default' , $this );
+        $this->view( $data );
 
 
     }

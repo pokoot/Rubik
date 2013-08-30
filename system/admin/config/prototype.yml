@@ -1,0 +1,10 @@
+control:
+    listing:
+        - 
+            permission: all
+            type: button
+            attributes:
+                label: "test button"
+
+    entry:
+         

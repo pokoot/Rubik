@@ -1,6 +1,6 @@
 <?php
 
-    $debug_init             = false;    
+    $DEBUG_INIT             = true;    
 	$system_folder          = "system";
     $application_folder     = "application";
 
@@ -75,7 +75,7 @@
      * Debug and prints the output 
      */
 
-    if( $debug_init ){            
+    if( $DEBUG_INIT ){            
         print "<br/> BASE_PATH = " . BASE_PATH;
         print "<br/> SYSTEM_PATH = " . SYSTEM_PATH;
         print "<br/> APPLICATION_PATH = " . APPLICATION_PATH;

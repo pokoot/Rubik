@@ -29,9 +29,6 @@
 
     $LOADER = new Library\Loader();
 
-    $LOADER->debug = $debug_init;
-
-
     $LOADER->multiple_require( SYSTEM_PATH . 'library/*.php'  );
     $LOADER->multiple_require( SYSTEM_PATH . 'helper/*.php'  );
     $LOADER->multiple_require( SYSTEM_PATH . 'model/*.php'  );    

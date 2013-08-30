@@ -12,6 +12,10 @@ if ( ! defined("BASE_PATH")) exit("No direct script access allowed");
  */
 interface Action{
     public function request();
+    public function add();
+    public function edit();
+    public function delete();
+    public function save();
     public function index();
 }
 

@@ -17,11 +17,16 @@
     session_start();
 
     require_once "./system/core/bootstrap.php";    
-    require_once "./system/core/common.php";    
-    require_once "./system/core/loader.php";  
-    require_once "./system/core/admin.php";    
-    require_once "./system/core/aeds.php";    
-    require_once "./system/core/action.php";    
+    
+    require_once SYSTEM_PATH . "core/common.php";    
+    require_once SYSTEM_PATH . "core/loader.php";  
+    require_once SYSTEM_PATH . "core/action.php";    
+    require_once SYSTEM_PATH . "core/admin.php";    
+
+    require_once SYSTEM_PATH . "core/model.php";    
+    
+    
+    
 
 
     // TODO :: IP RESTRICTION 
@@ -39,7 +44,7 @@
 
         // TODO :: Every pages will have some sort of notice.
         
-        $app = new Admin();
+        $app = new Admin( $debug_init);
         $app->index();
 
     }
