@@ -45,10 +45,15 @@ class Admin{
      * @return void
      */
     private function load_helper( $controller ){
+    
+        if( count( $controller->helper ) == 0 ){
+            return null;
+        }
+        
         
         foreach( $controller->helper AS $f ){
 
-            $file = APPLICATION_PATH . "helper/" . $f . ".php"; 
+            $file = APPLICATION_PATH . "/helper/" . $f . ".php"; 
 
             if( !file_exists( $file ) ){
                 die( "Unable to load helper file. Please check \"$f\" helper file. ");
@@ -77,10 +82,10 @@ class Admin{
  
         foreach( $controller->model AS $f ){
 
-            $file = SYSTEM_PATH . "model/" . $f . ".php"; 
+            $file = SYSTEM_PATH . "/model/" . $f . ".php"; 
              
             if( !file_exists( $file ) ){
-                $file = APPLICATION_PATH . "model/" . $f . ".php" ;
+                $file = APPLICATION_PATH . "/model/" . $f . ".php" ;
             }
 
             if( !file_exists( $file ) ){
@@ -125,11 +130,11 @@ class Admin{
             $file = $file[0];
         }
 
-        $file = SYSTEM_PATH . "admin/config/" . $file . ".yml"; 
+        $file = SYSTEM_PATH . "/admin/config/" . $file . ".yml"; 
 
 
         if( !file_exists( $file ) ){
-            $file = APPLICATION_PATH . "admin/config/" . $file . ".yml" ;
+            $file = APPLICATION_PATH . "/admin/config/" . $file . ".yml" ;
         }
 
         if( !file_exists( $file ) ){
@@ -210,7 +215,7 @@ class Admin{
             extract( $param , EXTR_PREFIX_SAME, "duplicate" );
         }
 
-        $file = SYSTEM_PATH . "admin/view/" . $template . ".php";
+        $file = SYSTEM_PATH . "/admin/view/" . $template . ".php";
 
         if( !file_exists( $file ) ){
             die( "Unable to load view. Please check the view file if it does exist. ");
@@ -231,10 +236,10 @@ class Admin{
      */
     public function index(){
 
-        $file = SYSTEM_PATH . "admin/controller/" . MODULE . ".php";
+        $file = SYSTEM_PATH . "/admin/controller/" . MODULE . ".php";
 
         if( !file_exists( $file ) ){
-            $file = APPLICATION_PATH . "admin/controller/" . MODULE . ".php" ;
+            $file = APPLICATION_PATH . "/admin/controller/" . MODULE . ".php" ;
         }
 
         if( !file_exists( $file ) ){

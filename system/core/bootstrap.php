@@ -14,7 +14,7 @@
      * The current working dir 
      */
     
-    define( "BASE_PATH" , getcwd() . '/');
+    define( "BASE_PATH" , getcwd() );
 
     
 
@@ -28,8 +28,8 @@
 
     $system_path = '';
     if (realpath($system_folder) !== FALSE){        
-        $system_path = realpath($system_folder) . '/';                
-        $system_path = rtrim($system_path, '/') . '/';        
+        $system_path = realpath($system_folder) ;                
+        $system_path = rtrim($system_path, '/') ;        
     }
     
     
@@ -46,12 +46,12 @@
      */
     
     if (is_dir($application_folder)){        
-        define( "APPLICATION_PATH" ,  BASE_PATH . $application_folder . '/' );        
+        define( "APPLICATION_PATH" ,  BASE_PATH . $application_folder  );        
     }else{
-		if( !is_dir( BASE_PATH . $application_folder . '/' ) ){
+		if( !is_dir( BASE_PATH . $application_folder  ) ){
 			exit( "Application folder is not properly configured." );
 		}
-		define( "APPLICATION_PATH" , BASE_PATH . $application_folder.'/');
+		define( "APPLICATION_PATH" , BASE_PATH . $application_folder );
 	}   
 
 
@@ -61,11 +61,11 @@
      */
 
     if (isset($_SERVER["HTTP_HOST"])){
-	    $base_url = isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) !== "off" ? "https" : "http";
-		$base_url .= "://". $_SERVER["HTTP_HOST"];
-		$base_url .= str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]);
+        $base_url = isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) !== "off" ? "https" : "http";        
+        $base_url .= "://". $_SERVER["HTTP_HOST"];
+        $base_url .= str_replace( "/" . basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]);    
 	}else{
-		$base_url = "http://localhost/";
+		$base_url = "http://localhost";
     }
     define( "SITE_URL" , $base_url );
 

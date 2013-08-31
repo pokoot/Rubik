@@ -18,11 +18,11 @@
 
     require_once "./system/core/bootstrap.php";    
     
-    require_once SYSTEM_PATH . "core/common.php";    
-    require_once SYSTEM_PATH . "core/loader.php";  
-    require_once SYSTEM_PATH . "core/admin.php";    
+    require_once SYSTEM_PATH . "/core/common.php";    
+    require_once SYSTEM_PATH . "/core/loader.php";  
+    require_once SYSTEM_PATH . "/core/admin.php";    
 
-    require_once SYSTEM_PATH . "library/action.php";    
+    require_once SYSTEM_PATH . "/library/action.php";    
     
     
 
