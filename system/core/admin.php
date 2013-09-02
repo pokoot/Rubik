@@ -43,10 +43,12 @@ class Admin{
         
         foreach( $controller->vendor AS $d ){
 
-            $file = APPLICATION_PATH . "/vendor/$d/index.php";
+            $filename = "/vendor/$d/index.php";
 
-            if( !file_exists( $file ) ){
-                die( "Unable to load vendor ( $file).");
+            $file = APPLICATION_PATH . $filename ;
+
+            if( !file_exists( $file ) ){                
+                die( "Unable to load vendor ($filename).");
             }
 
             debug_init( "loading vendor file = $file " );
@@ -73,10 +75,12 @@ class Admin{
         
         foreach( $controller->library AS $f ){
 
-            $file = APPLICATION_PATH . "/library/" . $f . ".php";             
+            $filename = "/library/" . $f . ".php";
 
-            if( !file_exists( $file ) ){
-                die( "Unable to load library file ($file).");
+            $file = APPLICATION_PATH . $filename;             
+
+            if( !file_exists( $file ) ){                
+                die( "Unable to load library file ($filename).");
             }
 
             debug_init( "loading library file = $file " );
@@ -102,11 +106,12 @@ class Admin{
         
         foreach( $controller->helper AS $f ){
 
-            $file = APPLICATION_PATH . "/helper/" . $f . ".php";             
+            $filename = "/helper/" . $f . ".php";
 
-            if( !file_exists( $file ) ){
-                
-                die( "Unable to load helper file ($file).");
+            $file = APPLICATION_PATH . $filename;             
+
+            if( !file_exists( $file ) ){                
+                die( "Unable to load helper file ($filename).");
             }
 
             debug_init( "loading helper file = $file " );
@@ -129,14 +134,16 @@ class Admin{
  
         foreach( $controller->model AS $f ){
 
-            $file = SYSTEM_PATH . "/admin/model/" . $f . ".php"; 
+            $filename = "/admin/model/" . $f . ".php";
+
+            $file = SYSTEM_PATH . $filename ; 
              
             if( !file_exists( $file ) ){
-                $file = APPLICATION_PATH . "/admin/model/" . $f . ".php" ;
+                $file = APPLICATION_PATH . $filename ;
             }
 
-            if( !file_exists( $file ) ){
-                die( "Unable to load model file ($file). ");
+            if( !file_exists( $file ) ){                
+                die( "Unable to load model file ($filename). ");
             }
 
             debug_init( "loading model file = $file " );
@@ -172,14 +179,16 @@ class Admin{
      */
     private function load_config( $controller ) {
 
-        $file = SYSTEM_PATH . "/admin/config/" . MODULE . ".yml"; 
+        $filename = "/admin/config/" . MODULE . ".yml";
+
+        $file = SYSTEM_PATH . $filename; 
 
         if( !file_exists( $file ) ){
-            $file = APPLICATION_PATH . "/admin/config/" . MODULE . ".yml" ;
+            $file = APPLICATION_PATH . $filename ;
         }
 
-        if( !file_exists( $file ) ){
-            die( "Unable to load .yml configuration file ($file).");
+        if( !file_exists( $file ) ){            
+            die( "Unable to load .yml configuration file ($filename).");
         }
 
 
@@ -208,10 +217,12 @@ class Admin{
             extract( $param , EXTR_PREFIX_SAME, "duplicate" );
         }
 
-        $file = SYSTEM_PATH . "/admin/view/" . $template . ".php";
+        $filename = "/admin/view/" . $template . ".php";
 
-        if( !file_exists( $file ) ){
-            die( "Unable to load view ($file).");
+        $file = SYSTEM_PATH . $filename;
+
+        if( !file_exists( $file ) ){            
+            die( "Unable to load view ($filename).");
         }
 
         debug_init( "loading view file =  $file " );
@@ -279,14 +290,16 @@ class Admin{
      */
     public function index(){
 
-        $file = SYSTEM_PATH . "/admin/controller/" . MODULE . ".php";
+        $filename = "/admin/controller/" . MODULE . ".php";
+
+        $file = SYSTEM_PATH . $filename ;
 
         if( !file_exists( $file ) ){
-            $file = APPLICATION_PATH . "/admin/controller/" . MODULE . ".php" ;
+            $file = APPLICATION_PATH . $filename ;
         }
 
-        if( !file_exists( $file ) ){
-            die( "Unable to load module ($file).");
+        if( !file_exists( $file ) ){            
+            die( "Unable to load module ($filename).");
         }
 
         require_once $file;
