@@ -46,12 +46,13 @@
      */
     
     if (is_dir($application_folder)){        
-        define( "APPLICATION_PATH" ,  BASE_PATH . $application_folder  );        
+        
+        define( "APPLICATION_PATH" ,  BASE_PATH . '/' . $application_folder  );        
     }else{
 		if( !is_dir( BASE_PATH . $application_folder  ) ){
 			exit( "Application folder is not properly configured." );
 		}
-		define( "APPLICATION_PATH" , BASE_PATH . $application_folder );
+		define( "APPLICATION_PATH" , BASE_PATH . '/' . $application_folder );
 	}   
 
 

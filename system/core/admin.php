@@ -28,12 +28,62 @@ class Admin{
     }
 
 
+    /**
+     * Loading external vendor components 
+     * 
+     * @access private
+     * @param mixed $controller 
+     * @return void
+     */
     private function load_vendor( $controller ){
+
+        if( count( $controller->vendor ) == 0 ){
+            return null;
+        }   
+        
+        foreach( $controller->vendor AS $d ){
+
+            $file = APPLICATION_PATH . "/vendor/$d/index.php";
+
+            if( !file_exists( $file ) ){
+                die( "Unable to load vendor. Please check \"$d\" vendor folder. and check index.php. ");
+            }
+
+            debug_init( "loading vendor file = $file " );
+
+            require_once $file; 
+
+        }
     
     }
 
+
+    /**
+     * Load external classes 
+     * 
+     * @access private
+     * @param mixed $controller 
+     * @return void
+     */
     private function load_library( $controller ){
-    
+
+        if( count( $controller->library ) == 0 ){
+            return null;
+        }   
+        
+        foreach( $controller->library AS $f ){
+
+            $file = APPLICATION_PATH . "/library/" . $f . ".php";             
+
+            if( !file_exists( $file ) ){
+                die( "Unable to load library file. Please check \"$f\" library file. ");
+            }
+
+            debug_init( "loading library file = $file " );
+
+            require_once $file; 
+
+        }
     }
 
 
@@ -48,12 +98,11 @@ class Admin{
     
         if( count( $controller->helper ) == 0 ){
             return null;
-        }
-        
+        }        
         
         foreach( $controller->helper AS $f ){
 
-            $file = APPLICATION_PATH . "/helper/" . $f . ".php"; 
+            $file = APPLICATION_PATH . "/helper/" . $f . ".php";             
 
             if( !file_exists( $file ) ){
                 die( "Unable to load helper file. Please check \"$f\" helper file. ");

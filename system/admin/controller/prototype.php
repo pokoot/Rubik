@@ -6,11 +6,12 @@ class Prototype extends Admin implements Action{
 
     protected $config = array( "prototype" );
     protected $model = array( "prototype" );
-    protected $helper;
-    protected $library;
+    protected $helper = array( "prototype" );
+    protected $library = array( "sample" );
+    protected $vendor = array( "sample" );
     protected $js;
     protected $css;
-    protected $vendor;
+    
  
     public function __construct(){
     }
