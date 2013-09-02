@@ -16,11 +16,11 @@
     if( isset($_GET["debug"] ) ){ $CONFIG->set( ( $_GET["debug"] == "true" ) ? true : false ); } 
 
 
-    $CONFIG->load( APPLICATION_PATH . "/config/config.yml" , $merge = true ); 
+    $CONFIG->load( APPLICATION_PATH . "/setting/config.yml" , $merge = true ); 
     $environment = $CONFIG->search( array( "framework" , "environment" ) );
 
-    $CONFIG->load( APPLICATION_PATH . "/config/" .  $environment . ".yml"   , $merge = true ); 
-    $CONFIG->load( APPLICATION_PATH . "/config/menu.yml"  , $merge = true );     
+    $CONFIG->load( APPLICATION_PATH . "/setting/" .  $environment . ".yml"   , $merge = true ); 
+    $CONFIG->load( APPLICATION_PATH . "/setting/menu.yml"  , $merge = true );     
 
     
 

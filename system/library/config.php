@@ -100,6 +100,10 @@ class Config{
      * @return void
      */
     public function load( $file , $merge_flag = false ){
+
+        if( !file_exists( $file ) ){
+            die( "Unable to load configuration file. Please check $file " );
+        }
         
         $array = yaml_load_file( $file );
 

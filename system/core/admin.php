@@ -131,10 +131,10 @@ class Admin{
  
         foreach( $controller->model AS $f ){
 
-            $file = SYSTEM_PATH . "/model/" . $f . ".php"; 
+            $file = SYSTEM_PATH . "/admin/model/" . $f . ".php"; 
              
             if( !file_exists( $file ) ){
-                $file = APPLICATION_PATH . "/model/" . $f . ".php" ;
+                $file = APPLICATION_PATH . "/admin/model/" . $f . ".php" ;
             }
 
             if( !file_exists( $file ) ){
@@ -203,6 +203,35 @@ class Admin{
 
    
     /**
+     * Load the template html view file 
+     * 
+     * @access public
+     * @param string $html 
+     * @param array $param 
+     * @return void
+     */
+    public function view( $param  = array() , $template = "default" ){
+
+        if( is_array( $param ) && count( $param ) > 0){
+            extract( $param , EXTR_PREFIX_SAME, "duplicate" );
+        }
+
+        $file = SYSTEM_PATH . "/admin/view/" . $template . ".php";
+
+        if( !file_exists( $file ) ){
+            die( "Unable to load view. Please check the view file if it does exist. ");
+        }
+
+        debug_init( "loading view file =  $file " );
+
+        // TODO :: LOAD JS AND CSS
+
+        require_once $file;    
+    
+    }
+
+
+    /**
      * Tells whether it is add, edit, delete and save ... 
      * 
      * @access public
@@ -247,37 +276,6 @@ class Admin{
         }
 
        
-    }
-
-
-
-
-    /**
-     * Load the template html view file 
-     * 
-     * @access public
-     * @param string $html 
-     * @param array $param 
-     * @return void
-     */
-    public function view( $param  = array() , $template = "default" ){
-
-        if( is_array( $param ) && count( $param ) > 0){
-            extract( $param , EXTR_PREFIX_SAME, "duplicate" );
-        }
-
-        $file = SYSTEM_PATH . "/admin/view/" . $template . ".php";
-
-        if( !file_exists( $file ) ){
-            die( "Unable to load view. Please check the view file if it does exist. ");
-        }
-
-        debug_init( "loading view file =  $file " );
-
-        // TODO :: LOAD JS AND CSS
-
-        require_once $file;    
-    
     }
 
 
