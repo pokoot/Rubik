@@ -31,7 +31,7 @@
 
     $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );    
 
-    define( "MODULE" , get( "module" ) );
+    define( "MODULE" , strtolower( get( "module" ) ) );
     
     if( $maintenance === true && MODULE === "login" ){
 

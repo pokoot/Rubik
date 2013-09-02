@@ -1,10 +1,120 @@
-control:
-    listing:
-        - 
-            permission: all
-            type: button
-            attributes:
-                label: "test button"
+listing:
 
-    entry:
-         
+    query:
+        display: 25
+        total: COUNT(*)
+        select: c.*
+        from: | 
+                complex AS c
+        where:
+        group:
+        order:
+
+    control:    
+        search: c.name LIKE '%##Q##%'
+        button:
+            -
+                permission: all                
+                onclick: 'form_action( "ADD" );'
+                label: 'ADD ENTRY'
+
+        filter:
+            - 
+                type: select
+                operation: c.status = '##POST##'
+                name: status
+                id: status
+                class: 'width_150'
+                onchange: 'filter_submit();'
+                options:
+                    '': Select Status
+                    active: Active
+                    inactive: Inactive
+
+    grid:
+        -
+            header:
+                permission: all
+                type: text
+                align: center
+                
+            data:
+                type: text
+                align: center
+                row: Id
+
+        -
+           header : 
+                permission: all
+                type: text
+                align: center
+                sort: false
+                field:
+                label: Actions
+                width: 160
+
+            data :
+                type: actions
+                align: center
+                actions:
+                    - 
+                        permission: all
+                        type: download
+                    -   
+                        permission: all
+                        type: link
+                    -   
+                        permission: all
+                        type: delete 
+                        message: 'are you sure you want to delete entry?'
+                    -   
+                        permission: all
+                        type: edit 
+
+                
+
+
+
+
+
+entry:
+    control:
+        button:
+            -
+                permission: all
+                position: top
+                type:
+
+    form:        
+        -
+            type: upload
+            required: false
+            label: upload
+            name: image
+            id: image
+            width: 80
+            height: 80
+            folder: complex
+            thumbnail: true
+            thumbnail_image: medium
+            thumbnail_field: image_extension
+            info: 
+
+        -
+            type: select
+            required: true
+            label: select
+            name: status
+            id: status
+            selected: @@status
+            class: width_260
+            
+
+TODO: continue with the rest of the form
+    
+
+
+            
+
+            
+            

@@ -2,9 +2,18 @@
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
-class Prototype extends Admin implements Action{ 
+/**
+ * TODO:: To have simple and complex examples. 
+ * 
+ * @uses Admin
+ * @uses Action
+ * @package 
+ * @version $id$
+ * @author Harold Kim Cantil 
+ * @license http://pokoot.com/license.txt
+ */
+class Prototype extends Admin implements Action{     
 
-    protected $config = array( "prototype" );
     protected $model = array( "prototype" );
     protected $helper = array( "prototype" );
     protected $library = array( "sample" );
@@ -33,8 +42,8 @@ class Prototype extends Admin implements Action{
  
     public function index(){        
         $this->request();
-        $this->process();        
-        
+        $this->process();
+
         $data = array(
             "title"     => "Prototype" , 
             "request"   => $this->request             

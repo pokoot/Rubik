@@ -167,23 +167,12 @@ class Admin{
      * @access private
      * @param mixed $controller 
      */
-    private function load_config( $controller ) {        
+    private function load_config( $controller ) {
 
-        $file = $controller->config;
-
-        if( count( $file  ) > 1 ){
-            die( 'Unable to proceed. Can only load 1 configuration file setting. Check controller code ... $this->config = array( "prototype" )' );
-        }
-
-        if( is_array( $file ) ){
-            $file = $file[0];
-        }
-
-        $file = SYSTEM_PATH . "/admin/config/" . $file . ".yml"; 
-
+        $file = SYSTEM_PATH . "/admin/config/" . MODULE . ".yml"; 
 
         if( !file_exists( $file ) ){
-            $file = APPLICATION_PATH . "/admin/config/" . $file . ".yml" ;
+            $file = APPLICATION_PATH . "/admin/config/" . MODULE . ".yml" ;
         }
 
         if( !file_exists( $file ) ){
