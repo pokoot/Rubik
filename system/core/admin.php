@@ -46,7 +46,7 @@ class Admin{
             $file = APPLICATION_PATH . "/vendor/$d/index.php";
 
             if( !file_exists( $file ) ){
-                die( "Unable to load vendor. Please check \"$d\" vendor folder. and check index.php. ");
+                die( "Unable to load vendor ( $file).");
             }
 
             debug_init( "loading vendor file = $file " );
@@ -76,7 +76,7 @@ class Admin{
             $file = APPLICATION_PATH . "/library/" . $f . ".php";             
 
             if( !file_exists( $file ) ){
-                die( "Unable to load library file. Please check \"$f\" library file. ");
+                die( "Unable to load library file ($file).");
             }
 
             debug_init( "loading library file = $file " );
@@ -105,7 +105,8 @@ class Admin{
             $file = APPLICATION_PATH . "/helper/" . $f . ".php";             
 
             if( !file_exists( $file ) ){
-                die( "Unable to load helper file. Please check \"$f\" helper file. ");
+                
+                die( "Unable to load helper file ($file).");
             }
 
             debug_init( "loading helper file = $file " );
@@ -113,9 +114,6 @@ class Admin{
             require_once $file; 
 
         }
-
-              
-        
  
     }
 
@@ -138,23 +136,28 @@ class Admin{
             }
 
             if( !file_exists( $file ) ){
-                die( "Unable to load model file. Please check \"$f\" model class. ");
+                die( "Unable to load model file ($file). ");
             }
 
             debug_init( "loading model file = $file " );
 
             require_once $file; 
-
+            
 
             // Dynamically instantiate the namespace Model
             
-            $class_name = "Model\\$f";
+            $namespace_name = "Model\\$f";
     
-            $model = new $class_name();
+            $object = new $namespace_name();
 
-            $property_name = $model->name;
+            // Get the class name automatically without the namespaces.
+            
+            $class_name = get_class( $object );
+            if (preg_match('@\\\\([\w]+)$@', $class_name, $matches)) {
+                $class_name = $matches[1];
+            }
 
-            $controller->$property_name = $model;
+            $controller->$class_name = $object;
 
         }
 
@@ -176,7 +179,7 @@ class Admin{
         }
 
         if( !file_exists( $file ) ){
-            die( "Unable to load .yml configuration file. Please check your .yml configuration file if it does exist. ");
+            die( "Unable to load .yml configuration file ($file).");
         }
 
 
@@ -208,7 +211,7 @@ class Admin{
         $file = SYSTEM_PATH . "/admin/view/" . $template . ".php";
 
         if( !file_exists( $file ) ){
-            die( "Unable to load view. Please check the view file if it does exist. ");
+            die( "Unable to load view ($file).");
         }
 
         debug_init( "loading view file =  $file " );
@@ -283,13 +286,13 @@ class Admin{
         }
 
         if( !file_exists( $file ) ){
-            die( "Unable to load module. Please check your admin controller if it does exist. ");
+            die( "Unable to load module ($file).");
         }
 
         require_once $file;
 
         if( !class_exists( MODULE ) ){
-            die( "Unable to load module. The class already exist. Please check for possible class duplicates" );
+            die( "Unable to load module, the class already exist (" . MODULE . ")." );
         }
 
 
@@ -299,14 +302,12 @@ class Admin{
 
 
         $this->load_config( $controller );
+        $this->load_model( $controller );
         $this->load_helper( $controller );
         $this->load_library( $controller );
         $this->load_vendor( $controller );
-        $this->load_model( $controller );
-
+        
         //print_r( $controller->yaml );
-
-
 
         $controller->index();
 

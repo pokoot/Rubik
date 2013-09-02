@@ -3,7 +3,7 @@
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 /**
- * TODO:: To have simple and complex examples. 
+ * A complex example of a controller class
  * 
  * @uses Admin
  * @uses Action
@@ -12,12 +12,12 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  * @author Harold Kim Cantil 
  * @license http://pokoot.com/license.txt
  */
-class Prototype extends Admin implements Action{     
+class Complex extends Admin implements Action{     
 
-    protected $model = array( "prototype" );
-    protected $helper = array( "prototype" );
+    protected $model = array( "sample" );
+    protected $helper = array( "sample" );
     protected $library = array( "sample" );
-    protected $vendor = array( "sample" );
+    protected $vendor;
     protected $js;
     protected $css;
     
@@ -44,8 +44,9 @@ class Prototype extends Admin implements Action{
         $this->request();
         $this->process();
 
+
         $data = array(
-            "title"     => "Prototype" , 
+            "title"     => "Complex" , 
             "request"   => $this->request             
         );
 
