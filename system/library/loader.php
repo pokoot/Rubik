@@ -15,6 +15,8 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  */
 class Loader{
 
+
+    
     /**
      * Include file base on array
      *
@@ -45,7 +47,7 @@ class Loader{
      * @param mixed $path 
      * @return void
      */
-    public function multiple_require( $path ){
+    public function multiple_require( $path ){        
 
         foreach( glob( $path ) AS $file ){                    
             debug_init( $file );

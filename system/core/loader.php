@@ -30,8 +30,15 @@
 
     $LOADER = new \Library\Loader();
 
-    $LOADER->multiple_require( SYSTEM_PATH . '/library/*.php'  );
     $LOADER->multiple_require( SYSTEM_PATH . '/helper/*.php'  );
- 
+    $LOADER->multiple_require( SYSTEM_PATH . '/library/*.php'  );
+
+
+    /**
+     * Load the form library depending on their hhierarchy
+     */
+
+    // TODO
+
     
 ?>
