@@ -13,12 +13,12 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
  */
 class Admin{
 
-    protected $model;
-    protected $css;
-    protected $js;
-    protected $vendor;
-    protected $helper;
-    protected $library;
+    //protected $model;
+    //protected $css;
+    //protected $js;
+    //protected $vendor;
+    //protected $helper;
+    //protected $library;
 
     protected $request;
     protected $yaml;
@@ -250,6 +250,8 @@ class Admin{
     }
 
 
+
+
     /**
      * Load the template html view file 
      * 
@@ -271,6 +273,8 @@ class Admin{
         }
 
         debug_init( "loading view file =  $file " );
+
+        // TODO :: LOAD JS AND CSS
 
         require_once $file;    
     

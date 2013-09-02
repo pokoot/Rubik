@@ -33,9 +33,8 @@ class Prototype extends Admin implements Action{
  
     public function index(){        
         $this->request();
-        $this->process();
-
-      
+        $this->process();        
+        
         $data = array(
             "title"     => "Prototype" , 
             "request"   => $this->request             
@@ -43,7 +42,7 @@ class Prototype extends Admin implements Action{
 
         $this->view( $data );
 
-    }
-  
+    }  
+
 }
 ?>
