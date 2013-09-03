@@ -1,6 +1,6 @@
 <?php
 
-    $DEBUG_INIT             = true;    
+    $DEBUG_INIT             = false;    
 	$system_folder          = "system";
     $application_folder     = "application";
 
