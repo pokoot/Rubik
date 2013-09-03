@@ -107,6 +107,3 @@ entry:
             id: status
             selected: @@status
             class: width_260
-            
-
-TODO: continue with the rest of the form  

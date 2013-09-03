@@ -15,6 +15,7 @@ class Form{
     public function listing(){
 
         $listing = new \Library\Form\Listing( $this->yaml );
+
         $listing->query();
         
         $html = $listing->control();
@@ -26,7 +27,14 @@ class Form{
     }
 
     public function entry(){
-        
+        $entry = new \Library\Form\Entry( $this->yaml );
+
+        $html = $entry->button();
+
+        $html .= $entry->element();
+
+        return $html;
+         
     }
 
 }

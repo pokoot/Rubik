@@ -1,10 +1,10 @@
 <?php
 
-namespace Library\Form\Entry\Element;
+namespace Library\Form\Entry;
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
-class Upload implements \Library\Form\Action{
+class Button implements \Library\Form\Action{
 
     public $yaml;
 
@@ -15,14 +15,12 @@ class Upload implements \Library\Form\Action{
     public function validate(){
     }
 
-    public function render(){
+    public function button(){
 
-        $html = '<br/> elemet = upload render';
+        $html = '<br/> button';
     
         return $html;
     }
 
 }
 ?>
-
-

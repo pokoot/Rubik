@@ -48,8 +48,12 @@ class Complex extends Admin implements Action{
 
         $form = new \Library\Form( $this->yaml );
 
-        $form->listing();
+        print "<Br/> listing ... ";
+        print $form->listing();
 
+
+        print "<Br> entry ... ";
+        print $form->entry();
       
         $data = array(
             "title"     => "Complex" , 

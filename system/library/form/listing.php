@@ -14,8 +14,6 @@ class Listing{
 
     public function query(){
 
-        $statement = '';
-
         $object = new \Library\Form\Listing\Query( $this->yaml );
         $statement = $object->query();
 
@@ -24,11 +22,9 @@ class Listing{
 
     public function control(){
 
-        $html = '';
-
         $object = new \Library\Form\Listing\Control( $this->yaml );
         
-        $html .= $object->search();
+        $html = $object->search();
 
         $html .= $object->button();
 
