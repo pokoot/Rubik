@@ -78,14 +78,13 @@ listing:
 
 
 entry:
-    control:
-        button:
-            -
-                permission: all
-                position: top
-                type:
+    button:     
+        -
+            permission: all
+            position: top
+            label: 'SAVE'
 
-    form:        
+    element:        
         -
             type: upload
             required: false
