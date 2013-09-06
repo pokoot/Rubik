@@ -24,7 +24,7 @@ listing:
                 operation: c.status = '##POST##'
                 name: status
                 id: status
-                class: 'width_150'
+                width: 150
                 onchange: 'filter_submit();'
                 options:
                     '': Select Status
@@ -75,9 +75,8 @@ listing:
 
 
 
-
-
 entry:
+
     button:     
         -
             permission: all
