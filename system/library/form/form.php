@@ -12,12 +12,13 @@ class Form{
     public $yaml;
 
     public function __construct( $yaml ){
+
         $this->yaml = $yaml;
 
         $config = yaml_load_string( $yaml );
 
-        $this->config_listing   = $config["listing"];
-        $this->config_entry     = $config["entry"];
+        $this->config_listing   = element( "listing" , $config );
+        $this->config_entry     = element( "entry" , $config );
 
     }
 
@@ -36,7 +37,8 @@ class Form{
     }
 
     public function entry(){
-        $entry = new \Library\Form\Entry( $this->yaml );
+
+        $entry = new \Library\Form\Entry( $this->config_entry );
 
         $html = $entry->button();
 

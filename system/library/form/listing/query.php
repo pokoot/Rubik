@@ -14,10 +14,19 @@ class Query implements \Library\Form\Action{
     private $group;
     private $order;
 
-    public $yaml;
+    public $config;
 
-    public function __construct( $yaml ){
-        $this->yaml = $yaml;
+    public function __construct( $config ){
+
+        $this->config = $config;
+
+        $this->display  = element( "display" , $config );
+        $this->total    = element( "total" , $config );
+        $this->select   = element( "select" , $config );
+        $this->from     = element( "from" , $config );
+        $this->where    = element( "where" , $config );
+        $this->group    = element( "group" , $config );
+        $this->order    = element( "order" , $config );
     }
 
     public function validate(){

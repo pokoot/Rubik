@@ -6,15 +6,25 @@ if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 class Listing{
 
-    public $yaml;
+    public $config;
 
-    public function __construct( $yaml ){
-        $this->yaml = $yaml;
+    public $config_query;
+    public $config_control;
+    public $config_grid;
+
+    public function __construct( $config ){
+
+        $this->config = $config;
+
+        $this->config_query     = element( "query" , $config );
+        $this->config_control   = element( "control" , $config );
+        $this->config_grid      = element( "grid" , $condfig );
+
     }
 
     public function query(){
 
-        $object = new \Library\Form\Listing\Query( $this->yaml );
+        $object = new \Library\Form\Listing\Query( $this->config_query );
         $statement = $object->query();
 
         return $statement;
@@ -22,7 +32,7 @@ class Listing{
 
     public function control(){
 
-        $object = new \Library\Form\Listing\Control( $this->yaml );
+        $object = new \Library\Form\Listing\Control( $this->config_control );
         
         $html = $object->search();
 
@@ -33,12 +43,15 @@ class Listing{
         return $html;
     }
 
-    
     public function grid(){
-        $object = new \Library\Form\Listing\Control\Grid( $this->yaml );
+    
+        $object = new \Library\Form\Listing\Control\Grid( $this->config_grid );
+
         $html = $object->grid();
+
         return $html;
     }
+
 }
 
 
