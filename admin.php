@@ -35,14 +35,14 @@
     
     if( $maintenance === true && MODULE === "login" ){
 
-            require_once SYSTEM_PATH . 'admin/view/manbintenance.php';
+        require_once SYSTEM_PATH . 'admin/view/manbintenance.php';
         exit();
 
     }else{
 
         // TODO :: Every pages will have some sort of notice.
         
-        $app = new Admin( $debug_init);
+        $app = new Admin( $debig_init );
         $app->index();
 
     }
