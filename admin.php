@@ -1,8 +1,8 @@
 <?php
 
     /**
-     * Author: Harold Kim Cantil 
-     */    
+     * Author: Harold Kim Cantil
+     */
 
     Header("Cache-Control: must-revalidate");
     Header("Expires: " . gmdate( "D, d M Y H:i:s", time() +  60 * 60 * 24 * 3 ) . " GMT");
@@ -11,28 +11,28 @@
 
     //ini_set( "session.cookie_secure" , "On" ); // VIA SSL?
     ini_set( "session.cookie_httponly" , "On" );
-    
+
     @session_regenerate_id(false);
     @session_destroy();
     session_start();
 
-    require_once "./system/core/bootstrap.php";    
-    
+    require_once "./system/core/bootstrap.php";
+
     require_once SYSTEM_PATH . "/core/common.php";
     require_once SYSTEM_PATH . "/core/admin.php";
-    require_once SYSTEM_PATH . "/library/action.php";    
-    require_once SYSTEM_PATH . "/library/admin.php";    
-    
-    
-    
+    require_once SYSTEM_PATH . "/library/action.php";
+    require_once SYSTEM_PATH . "/library/admin.php";
 
 
-    // TODO :: IP RESTRICTION 
 
-    $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );    
+
+
+    // TODO :: IP RESTRICTION
+
+    $maintenance = $CONFIG->search( array( "admin" , "maintenance" ) );
 
     define( "MODULE" , strtolower( get( "module" ) ) );
-    
+
     if( $maintenance === true && MODULE === "login" ){
 
         require_once SYSTEM_PATH . 'admin/view/manbintenance.php';
@@ -41,8 +41,8 @@
     }else{
 
         // TODO :: Every pages will have some sort of notice.
-        
-        $app = new Admin( $debig_init );
+
+        $app = new Admin( $debug_init );
         $app->index();
 
     }
