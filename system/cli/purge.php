@@ -1,7 +1,7 @@
 <?php  if ( !defined('BASE_PATH')) exit('No direct script access allowed');
 /**
  * Purge data data on the last 90 days
- * 
+ *
  * Basic usage:
  * php cli.php --module=purge --log=file
  *
@@ -10,14 +10,14 @@
  * php cli.php --module=purge --table=history --days=90 --log=file
  *
  * @uses Cli
- * @package 
+ * @package
  * @version $id$
  * @author Kim
  * @license Cellcity
  */
 class Purge extends Cli {
 
-    protected $model = array( "history" );    
+    protected $model = array( "history" );
     protected $helper;
     protected $library;
     protected $language;
@@ -26,9 +26,9 @@ class Purge extends Cli {
 
     /**
      * Index
-     * 
+     *
      * @access public
-     * @param mixed $datas 
+     * @param mixed $datas
      * @return void
      */
     public function index(){
@@ -43,10 +43,10 @@ class Purge extends Cli {
         $model = new Model_History();
 
         $query = "
-            DELETE 
-            FROM $table 
-            WHERE   
-                created_date < NOW() - INTERVAL $days DAY 
+            DELETE
+            FROM $table
+            WHERE
+                created_date < NOW() - INTERVAL $days DAY
         ";
 
         writeln( $query );
@@ -56,7 +56,7 @@ class Purge extends Cli {
         $total = $model->get_total();
 
         logln( "Total data purge in history table = " . $total );
-    
+
     }
 
 }
