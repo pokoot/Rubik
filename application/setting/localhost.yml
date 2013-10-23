@@ -5,7 +5,7 @@ general:
     timezone: Asia/Singapore
 
 database:
-    host: localhost 
+    host: localhost
     username: root
     password:
     name: rubik

@@ -26,7 +26,7 @@ if( !function_exists('element')){
 
 
 
- 
+
 /**
  * Elements
  *
@@ -42,19 +42,19 @@ if( !function_exists('element')){
 if( !function_exists('elements')){
 	function elements($items, $array, $default = false){
 		$return = array();
-		
+
 		if( !is_array($items)){
 			$items = array($items);
-        } 
-		
+        }
+
         foreach ($items as $item){
 			if(isset($array[$item])){
                 $return[$item] = $array[$item];
- 
+
 			}else{
 				$return[$item] = $default;
             }
-            
+
 		}
 		return $return;
 	}
@@ -82,14 +82,14 @@ if( !function_exists('random_element')){
 
 /**
  * Split a clean string by string
- * 
+ *
  * @access public
- * @param mixed $delimeter 
- * @param mixed $string 
+ * @param mixed $delimeter
+ * @param mixed $string
  * @return void
  */
 if( !function_exists( 'explode_clean' ) ){
-    
+
     function explode_clean( $delimeter , $string ){
 
         if( !is_string( $string )){
@@ -99,11 +99,11 @@ if( !function_exists( 'explode_clean' ) ){
         $arr = explode( $delimeter , $string );
 
         $array = Array();
-        foreach( $arr AS $v ){        
+        foreach( $arr AS $v ){
             $array[] = clean( $v );
         }
 
-        return $array;    
+        return $array;
     }
 }
 

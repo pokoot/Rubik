@@ -1,41 +1,41 @@
-<?php  
+<?php
 
 namespace Library;
 
 if ( !defined("BASE_PATH")) exit("No direct script access allowed.");
 
- 
+
 /**
- * Sql - mysql wrapper class  
+ * Sql - mysql wrapper class
  *
  * TODO:: gettype change to is_array is_string , decpreciated commands.
- * 
+ *
  * @uses Db
- * @package 
+ * @package
  * @version $id$
- * @author Harold Kim Cantil 
+ * @author Harold Kim Cantil
  * @license http://pokoot.com/license.txt
  */
 class Sql extends Db {
-     
+
     /**
-     * Sql - the class constructor  
-     * 
-     * @access protected     
+     * Sql - the class constructor
+     *
+     * @access protected
      * @return object
      */
     public function __construct(){
         parent::__construct();
     }
-    
+
 
 
     /**
-     *  get the number of rows in a result set 
-     * 
+     *  get the number of rows in a result set
+     *
      * @access public
      * @return integer - the number of rows in a result set
-     */    
+     */
     public function get_count(){
         if ( is_resource( $this->result ) ){
             return mysql_num_rows( $this->result );
@@ -48,8 +48,8 @@ class Sql extends Db {
 
 
     /**
-     * get number of affected rows in previous MySQL operation  
-     * 
+     * get number of affected rows in previous MySQL operation
+     *
      * @access public
      * @return integer - the number of rows in a result set
      */
@@ -62,14 +62,14 @@ class Sql extends Db {
 
     /**
      * Sends a mysql query string
-     * 
-     * @param string $query 
+     *
+     * @param string $query
      * @access public
      * @return mixed - the resource link identifier
      */
     public function query( $query ){
         $this->query    = $query;
-        $this->result   = mysql_query( $query );         
+        $this->result   = mysql_query( $query );
         $this->error    = false;
         if ( !$this->result ) {
             $this->error = true;
@@ -106,25 +106,25 @@ $mysql_error
 $query";
 
 
-                $title = 
-                    APPLICATION_NAME . ' - ' . 
+                $title =
+                    APPLICATION_NAME . ' - ' .
                     ENVIRONMENT . ' - ' .
                     strtoupper( CURRENT_MODULE ) . ' - ' .
-                    $mysql_error; 
+                    $mysql_error;
 
-                send_email( ADMIN_EMAIL , $title , $body ); 
+                send_email( ADMIN_EMAIL , $title , $body );
             }
 
         }
         return $this->result;
-    }        
+    }
 
 
 
 
     /**
-     * returns the query string  
-     * 
+     * returns the query string
+     *
      * @return string - the sql query string
      */
     public function get_query(){
@@ -134,7 +134,7 @@ $query";
 
 
 
-    
+
     /**
      * fetch rows
      * @return array - associative array
@@ -154,29 +154,29 @@ $query";
             $cnt = 0;
 
             while( $row = mysql_fetch_row( $results ) ){
-            
+
                 foreach( $row as $key => $val ){
 
-                    $data[$cnt]= html_entity_decode( ( $val ) );                    
+                    $data[$cnt]= html_entity_decode( ( $val ) );
                 }
 
                 $cnt++;
-                
+
             }
 
         }
         return $data;
-    }        
+    }
 
 
 
 
-   
+
     /**
-     * fetch a results row as an associative array  
-     * 
+     * fetch a results row as an associative array
+     *
      * @access public
-     * @param string $query 
+     * @param string $query
      * @return array - associative array
      */
     public function fetch_datas( $query = '' ){
@@ -201,16 +201,16 @@ $query";
 
         }
         return $data;
-    }        
+    }
 
 
 
 
     /**
-     * Fetch 1 data 
-     * 
+     * Fetch 1 data
+     *
      * @access public
-     * @param string $query 
+     * @param string $query
      * @return void
      */
     public function fetch_data( $query = '' ){
@@ -237,8 +237,8 @@ $query";
 
 
     /**
-     * mysql select statement 
-     * 
+     * mysql select statement
+     *
      * @param mixed can be an array or a string - selection fields
      * @param string can be an associative array or a string - query condtions
      * @param string miscellaneous conditions
@@ -246,7 +246,7 @@ $query";
      */
     public function select( $table , $select , $condition = "" , $misc = "" ){
 
-        if( gettype( $select ) === "array" ){                
+        if( gettype( $select ) === "array" ){
             $select = implode( " , " , $select );
         }
 
@@ -256,7 +256,7 @@ $query";
 
                 $val = $this->clean( $val );
 
-                if ( $val != null ) {                                           
+                if ( $val != null ) {
                     $temp[] = "$key = '$val'";
                 }else{
                     $temp[] = "$key IS null";
@@ -266,7 +266,7 @@ $query";
 
         }else if( gettype( $condition ) === "string" ){
             if ( $condition != "" ){
-                $condition = " WHERE $condition ";             
+                $condition = " WHERE $condition ";
             }
         }
 
@@ -279,12 +279,12 @@ $query";
 
 
     /**
-     * mysql insert statement 
-     * eg. 
+     * mysql insert statement
+     * eg.
      *   $a = array();
      *   $a['fieldName'] = "message";
      *   $ret = $sql->insert($a);
-     * 
+     *
      * @param mixed $insert - an associative array that is being index by a string
      * @return boolean - returns true on success and false on error
      */
@@ -294,7 +294,7 @@ $query";
 
         $temp = array();
         foreach( $insert as $val ){
-            $temp[] = $this->clean( $val );                             
+            $temp[] = $this->clean( $val );
         }
 
         $values = implode( "' , '" , $temp );
@@ -307,7 +307,7 @@ $query";
 
     /**
      * update - mysql update statement
-     * 
+     *
      * eg.
      *   $set = array();
      *   $set['fieldName'] = "message";
@@ -319,15 +319,15 @@ $query";
      * @param mixed $cond - can be an associative array or a string - query condtions
      * @return boolean - returns true on success and false on error
      */
-    public function update( $table , $set , $cond = "" , $misc = "" ){           
+    public function update( $table , $set , $cond = "" , $misc = "" ){
 
         if( gettype( $set ) === "array" ){
             $temp = array();
             foreach ( $set as $key => $val ){
 
-                $val = $this->clean( $val );                             
-                
-                if ( $val != '' ) {                                                    
+                $val = $this->clean( $val );
+
+                if ( $val != '' ) {
                     $temp[] = "$key = '$val' ";
                 }else{
                     $temp[] = "$key = '' ";
@@ -342,15 +342,15 @@ $query";
             $temp = array();
             foreach ( $cond as $key => $val ){
 
-                $val = $this->clean( $val );  
+                $val = $this->clean( $val );
 
-                if ( $val != '' ) {                                           
+                if ( $val != '' ) {
                     $temp[] = "$key = '$val'";
                 }else{
                     $temp[] = "$key = '' ";
                 }
             }
-            $cond = " WHERE " .implode( ' AND ' , $temp );            
+            $cond = " WHERE " .implode( ' AND ' , $temp );
 
         }else if( gettype( $cond ) === "string" ){
             if ( $cond != "" ){
@@ -359,15 +359,15 @@ $query";
         }
 
         $this->query = " UPDATE $table SET $set $cond $misc ";
-        return $this->query( $this->query ); 
+        return $this->query( $this->query );
     }
 
 
 
 
     /**
-     * mysql delete statement 
-     * 
+     * mysql delete statement
+     *
      * @param mixed $cond - can be an associative array or a string - query condtions
      * @access public
      * @return boolean - returns true on success and false on error
@@ -377,7 +377,7 @@ $query";
         if ( gettype( $cond ) === "array" ) {
 
             foreach ( $cond as $key => $val ){
-                $val = $this->clean( $val );    
+                $val = $this->clean( $val );
                 $temp[] = " $key = '$val' ";
             }
             $cond = " WHERE ". implode( ' AND ' , $temp );
@@ -392,16 +392,16 @@ $query";
 
         return $this->query ( $this->query );
     }
- 
+
 
 
 
     /**
-     * Cleans strings 
-     * 
+     * Cleans strings
+     *
      * @access public
-     * @param mixed $str 
-     * @param mixed $encode_ent 
+     * @param mixed $str
+     * @param mixed $encode_ent
      * @return void
      */
     public function clean( $str , $encode_ent = false ){
@@ -412,15 +412,15 @@ $query";
             $str = htmlentities($str);
         }
         if( version_compare( phpversion() ,'4.3.0') >= 0 ){
-            
+
             if(get_magic_quotes_gpc()){
                 $str = stripslashes($str);
             }
 
-            if( @mysql_ping() ){                
-                $str = mysql_real_escape_string($str);                
-            }else{                
-                $str = addslashes($str);                
+            if( @mysql_ping() ){
+                $str = mysql_real_escape_string($str);
+            }else{
+                $str = addslashes($str);
             }
 
         }else{
@@ -438,10 +438,10 @@ $query";
 
     /**
      * Retrieves the enum values
-     * 
+     *
      * @access public
-     * @param mixed $table 
-     * @param mixed $field 
+     * @param mixed $table
+     * @param mixed $field
      * @return void
      */
     public function enum( $table , $field ){
@@ -453,20 +453,20 @@ $query";
         $results = $this->fetch_datas( $query );
 
         foreach( $results as $row ) {
-            
+
             $types = $row['Type'];
-            preg_match_all( "/enum\((.*)\)/isU" , $types , $matches );            
-            
+            preg_match_all( "/enum\((.*)\)/isU" , $types , $matches );
+
             for( $i = 0; $i < count( $matches[0] ) ; $i++ ){
                 $types =  $matches[1][$i];
-                
+
                 $types = preg_replace( '/\'/' , '' , $types  );
-                
+
                 $types = explode( "," , $types );
-                
+
                 sort( $types );
                 return $types;
-            } 
+            }
         }
     }
 

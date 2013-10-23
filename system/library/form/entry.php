@@ -21,15 +21,15 @@ class Entry{
     }
 
     public function element(){
-        
+
         $object = new \Library\Form\Entry\Element( $this->yaml );
-        
+
         $html = $object->element();
 
         return $html;
     }
 
-   
+
 }
 
 
