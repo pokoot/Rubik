@@ -2,12 +2,12 @@
 
     /**
      * The loader files for admin.php front controller
-     */    
+     */
 
 
     require_once SYSTEM_PATH . "/helper/yaml.php";
-    require_once SYSTEM_PATH . "/library/spyc.php";    
-    require_once SYSTEM_PATH . "/library/config.php";     
+    require_once SYSTEM_PATH . "/library/spyc.php";
+    require_once SYSTEM_PATH . "/library/config.php";
     require_once SYSTEM_PATH . "/library/loader.php";
 
 
@@ -16,18 +16,18 @@
      */
 
     $CONFIG = new \Library\Config();
-  
+
     // set the debug flag
-    if( isset($_GET["debug"] ) ){ $CONFIG->set( ( $_GET["debug"] == "true" ) ? true : false ); } 
+    if( isset($_GET["debug"] ) ){ $CONFIG->set( ( $_GET["debug"] == "true" ) ? true : false ); }
 
 
-    $CONFIG->load( APPLICATION_PATH . "/setting/config.yml" , $merge = true ); 
+    $CONFIG->load( APPLICATION_PATH . "/setting/config.yml" , $merge = true );
     $environment = $CONFIG->search( array( "framework" , "environment" ) );
 
-    $CONFIG->load( APPLICATION_PATH . "/setting/" .  $environment . ".yml"   , $merge = true ); 
-    $CONFIG->load( APPLICATION_PATH . "/setting/menu.yml"  , $merge = true );     
+    $CONFIG->load( APPLICATION_PATH . "/setting/" .  $environment . ".yml"   , $merge = true );
+    $CONFIG->load( APPLICATION_PATH . "/setting/menu.yml"  , $merge = true );
 
-    
+
 
     /**
      * Init the $LOADER global object
@@ -61,5 +61,5 @@
     require_once SYSTEM_PATH . "/library/form/entry/element/upload.php";
 
 
-    
+
 ?>

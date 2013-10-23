@@ -1,4 +1,4 @@
-<?php   
+<?php
 /**
  * Trim Slashes
  *
@@ -10,14 +10,14 @@
  *
  * this/that/theother
  *
- * @access	public
- * @param	string
- * @return	string
+ * @access  public
+ * @param   string
+ * @return  string
  */
 if( !function_exists('trim_slashes')){
-	function trim_slashes($str){
-		return trim($str, '/');
-	}
+    function trim_slashes($str){
+        return trim($str, '/');
+    }
 }
 
 
@@ -26,21 +26,21 @@ if( !function_exists('trim_slashes')){
  *
  * Removes slashes contained in a string or in an array
  *
- * @access	public
- * @param	mixed	string or array
- * @return	mixed	string or array
+ * @access  public
+ * @param   mixed   string or array
+ * @return  mixed   string or array
  */
 if( !function_exists('strip_slashes')){
-	function strip_slashes($str){
-		if(is_array($str)){
-			foreach ($str as $key => $val){
-				$str[$key] = strip_slashes($val);
-			}
-		}else{
-			$str = stripslashes($str);
-		}
-		return $str;
-	}
+    function strip_slashes($str){
+        if(is_array($str)){
+            foreach ($str as $key => $val){
+                $str[$key] = strip_slashes($val);
+            }
+        }else{
+            $str = stripslashes($str);
+        }
+        return $str;
+    }
 }
 
 
@@ -50,14 +50,14 @@ if( !function_exists('strip_slashes')){
  *
  * Removes single and double quotes from a string
  *
- * @access	public
- * @param	string
- * @return	string
+ * @access  public
+ * @param   string
+ * @return  string
  */
 if( !function_exists('strip_quotes')){
-	function strip_quotes($str){
-		return str_replace(array('"', "'"), '', $str);
-	}
+    function strip_quotes($str){
+        return str_replace(array('"', "'"), '', $str);
+    }
 }
 
 
@@ -67,14 +67,14 @@ if( !function_exists('strip_quotes')){
  *
  * Converts single and double quotes to entities
  *
- * @access	public
- * @param	string
- * @return	string
+ * @access  public
+ * @param   string
+ * @return  string
  */
 if( !function_exists('quotes_to_entities')){
-	function quotes_to_entities($str){
-		return str_replace(array("\'","\"","'",'"'), array("&#39;","&quot;","&#39;","&quot;"), $str);
-	}
+    function quotes_to_entities($str){
+        return str_replace(array("\'","\"","'",'"'), array("&#39;","&quot;","&#39;","&quot;"), $str);
+    }
 }
 
 
@@ -92,14 +92,14 @@ if( !function_exists('quotes_to_entities')){
  *
  * http://www.some-site.com/index.php
  *
- * @access	public
- * @param	string
- * @return	string
+ * @access  public
+ * @param   string
+ * @return  string
  */
 if( !function_exists('reduce_double_slashes')){
-	function reduce_double_slashes($str){
-		return preg_replace("#(^|[^:])//+#", "\\1/", $str);
-	}
+    function reduce_double_slashes($str){
+        return preg_replace("#(^|[^:])//+#", "\\1/", $str);
+    }
 }
 
 
@@ -117,22 +117,22 @@ if( !function_exists('reduce_double_slashes')){
  *
  * Fred, Bill, Joe, Jimmy
  *
- * @access	public
- * @param	string
- * @param	string	the character you wish to reduce
- * @param	bool	true/false - whether to trim the character from the beginning/end
- * @return	string
+ * @access  public
+ * @param   string
+ * @param   string  the character you wish to reduce
+ * @param   bool    true/false - whether to trim the character from the beginning/end
+ * @return  string
  */
 if( !function_exists('reduce_multiples')){
-	function reduce_multiples($str, $character = ',', $trim = false){
-		$str = preg_replace('#'.preg_quote($character, '#').'{2,}#', $character, $str);
+    function reduce_multiples($str, $character = ',', $trim = false){
+        $str = preg_replace('#'.preg_quote($character, '#').'{2,}#', $character, $str);
 
-		if($trim === true){
-			$str = trim($str, $character);
-		}
+        if($trim === true){
+            $str = trim($str, $character);
+        }
 
-		return $str;
-	}
+        return $str;
+    }
 }
 
 
@@ -144,51 +144,51 @@ if( !function_exists('reduce_multiples')){
  *
  * Useful for generating passwords or hashes.
  *
- * @access	public
- * @param	string	type of random string.  basic, alpha, alunum, numeric, nozero, unique, md5, encrypt and sha1
- * @param	integer	number of characters
- * @return	string
+ * @access  public
+ * @param   string  type of random string.  basic, alpha, alunum, numeric, nozero, unique, md5, encrypt and sha1
+ * @param   integer number of characters
+ * @return  string
  */
 if( !function_exists('random_string')){
     function random_string($type = 'ALNUM', $len = 8){
         $type = strtoupper( $type );
-		switch($type){
-			case 'BASIC'	: return mt_rand();
-				break;
-			case 'ALNUM'	:
-			case 'NUMERIC'	:
-			case 'NOZERO'	:
-			case 'ALPHA'	:
+        switch($type){
+            case 'BASIC'    : return mt_rand();
+                break;
+            case 'ALNUM'    :
+            case 'NUMERIC'  :
+            case 'NOZERO'   :
+            case 'ALPHA'    :
 
-					switch ($type){
-						case 'ALPHA'	:	$pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-							break;
-						case 'ALNUM'	:	$pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-							break;
-						case 'NUMERIC'	:	$pool = '0123456789';
-							break;
-						case 'NOZERO'	:	$pool = '123456789';
-							break;
-					}
+                    switch ($type){
+                        case 'ALPHA'    :   $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'ALNUM'    :   $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'NUMERIC'  :   $pool = '0123456789';
+                            break;
+                        case 'NOZERO'   :   $pool = '123456789';
+                            break;
+                    }
 
-					$str = '';
-					for ($i=0; $i < $len; $i++){
-						$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
-					}
-					return $str;
-				break;
-			case 'UNIQUE'	:
-			case 'MD5'		:
+                    $str = '';
+                    for ($i=0; $i < $len; $i++){
+                        $str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
+                    }
+                    return $str;
+                break;
+            case 'UNIQUE'   :
+            case 'MD5'      :
 
-						return md5(uniqid(mt_rand()));
-				break;
-			case 'ENCRYPT'	:
-			case 'SHA1'	:
- 
-						return do_hash(uniqid(mt_rand(), true), 'sha1');
-				break;
-		}
-	}
+                        return md5(uniqid(mt_rand()));
+                break;
+            case 'ENCRYPT'  :
+            case 'SHA1' :
+
+                        return do_hash(uniqid(mt_rand(), true), 'sha1');
+                break;
+        }
+    }
 }
 
 
@@ -200,36 +200,36 @@ if( !function_exists('random_string')){
  *
  * Allows strings to be alternated.  See docs...
  *
- * @access	public
- * @param	string (as many parameters as needed)
- * @return	string
+ * @access  public
+ * @param   string (as many parameters as needed)
+ * @return  string
  */
 if( !function_exists('alternator')){
-	function alternator(){
-		static $i;
+    function alternator(){
+        static $i;
 
-		if(func_num_args() == 0){
-			$i = 0;
-			return '';
-		}
-		$args = func_get_args();
-		return $args[($i++ % count($args))];
-	}
+        if(func_num_args() == 0){
+            $i = 0;
+            return '';
+        }
+        $args = func_get_args();
+        return $args[($i++ % count($args))];
+    }
 }
 
 
 /**
  * Repeater function
  *
- * @access	public
- * @param	string
- * @param	integer	number of repeats
- * @return	string
+ * @access  public
+ * @param   string
+ * @param   integer number of repeats
+ * @return  string
  */
 if( !function_exists('repeater')){
-	function repeater($data, $num = 1){
-		return (($num > 0) ? str_repeat($data, $num) : '');
-	}
+    function repeater($data, $num = 1){
+        return (($num > 0) ? str_repeat($data, $num) : '');
+    }
 }
 
 
@@ -256,7 +256,7 @@ if( !function_exists('strip_text')){
                 //return  preg_replace("/[^A-Za-z0-9\s\s+\.\:\-\/%+\(\)\*\&\$\#\!\@\"\';\n\t\r]/","",$text);
                 break;
         }
-        
+
     }
 
 }

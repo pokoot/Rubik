@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Initialize the start time profiling 
- * 
+ * Initialize the start time profiling
+ *
  * @access public
  * @return void
  */
 if( !function_exists('timer_start')){
-    
+
     function timer_start(){
         GLOBAL $TIME;
         $TIME = 0;
@@ -18,14 +18,14 @@ if( !function_exists('timer_start')){
 
 
 /**
- * Get the current timing in script profiling 
- * 
+ * Get the current timing in script profiling
+ *
  * @access public
- * @param float $decimal 
+ * @param float $decimal
  * @return void
  */
 if( !function_exists('timer_get')){
-    
+
     function timer_get( $decimal = 4 ) {
         GLOBAL $TIME;
         $time = explode(" ",microtime());

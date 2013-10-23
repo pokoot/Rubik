@@ -4,22 +4,22 @@ listing:
         display: 25
         total: COUNT(*)
         select: c.*
-        from: | 
+        from: |
                 complex AS c
         where:
         group:
         order:
 
-    control:    
+    control:
         search: c.name LIKE '%##Q##%'
         button:
             -
-                permission: all                
+                permission: all
                 onclick: 'form_action( "ADD" );'
                 label: 'ADD ENTRY'
 
         filter:
-            - 
+            -
                 type: select
                 operation: c.status = '##POST##'
                 name: status
@@ -37,14 +37,14 @@ listing:
                 permission: all
                 type: text
                 align: center
-                
+
             data:
                 type: text
                 align: center
                 row: Id
 
         -
-           header : 
+           header :
                 permission: all
                 type: text
                 align: center
@@ -57,33 +57,30 @@ listing:
                 type: actions
                 align: center
                 actions:
-                    - 
+                    -
                         permission: all
                         type: download
-                    -   
+                    -
                         permission: all
                         type: link
-                    -   
+                    -
                         permission: all
-                        type: delete 
+                        type: delete
                         message: 'are you sure you want to delete entry?'
-                    -   
+                    -
                         permission: all
-                        type: edit 
-
-                
-
+                        type: edit
 
 
 entry:
 
-    button:     
+    button:
         -
             permission: all
             position: top
             label: 'SAVE'
 
-    element:        
+    element:
         -
             type: upload
             required: false
@@ -96,7 +93,7 @@ entry:
             thumbnail: true
             thumbnail_image: medium
             thumbnail_field: image_extension
-            info: 
+            info:
 
         -
             type: select

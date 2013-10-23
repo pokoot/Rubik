@@ -1,9 +1,9 @@
 <?php  if ( !defined("BASE_PATH")) exit( "No direct script access allowed" );
- 
+
 
 /**
- * Get the real ip address 
- * 
+ * Get the real ip address
+ *
  * @access public
  * @return string
  */
@@ -35,7 +35,7 @@ if( !function_exists('ip_get') ){
 
 /**
  * Can access the site based on $IP - inc.ip.php
- * 
+ *
  * @access public
  * @return boolean
  */

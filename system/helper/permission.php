@@ -6,7 +6,7 @@
  * Determines if a partials & pages can be accessed.
  *
  * Returns true is allowed
- * 
+ *
  * @access public
  * @return void
  */
@@ -28,10 +28,10 @@ if( !function_exists('allow_access')){
 
             if( in_array( $permission , $r ) ){
                 $allow = true;
-            } 
+            }
         }
         return $allow;
-	}
+    }
 }
 
 

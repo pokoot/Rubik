@@ -1,10 +1,10 @@
-<?php if ( !defined('BASE_PATH')) exit('No direct script access allowed.'); 
+<?php if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 /**
- * Parses yaml string to an array. 
- * 
+ * Parses yaml string to an array.
+ *
  * @access public
- * @param mixed $string 
+ * @param mixed $string
  * @return array
  */
 if(!function_exists('yaml_load_string')) {
@@ -21,9 +21,9 @@ if(!function_exists('yaml_load_string')) {
  * @param string $file Path to YAML file.
  * @return array
  */
-if( !function_exists('yaml_load_file') ){  
+if( !function_exists('yaml_load_file') ){
     function yaml_load_file ($file) {
-        return Library\Spyc::YAMLLoad($file);        
+        return Library\Spyc::YAMLLoad($file);
     }
 }
 
@@ -35,32 +35,32 @@ if( !function_exists('yaml_load_file') ){
  *
  * Similar to str_replace
  *
- * Example: 
+ * Example:
  *
  *      $yaml = file_get_contents( "./test.yml" );
  *      $results = yaml_replace( array( "test" ) ,  $yaml , "##" );
- * 
+ *
  * @access public
- * @param mixed $arr 
- * @param mixed $yaml 
+ * @param mixed $arr
+ * @param mixed $yaml
  * @return void
 */
 if( !function_exists( "yaml_replace" ) ){
-    
-    function yaml_replace( $arr , $yaml , $pad = "%" ){ 
+
+    function yaml_replace( $arr , $yaml , $pad = "%" ){
 
         $search = array();
         $replace = array();
         foreach( $arr AS $key => $value ){
 
-            if( is_string( $value ) ){     
-                
+            if( is_string( $value ) ){
+
                 $search[]   = $pad . $key . $pad;
 
                 $replace[]  = nl2br( "{$value}" );
             }
         }
-        
+
         return str_replace( $search , $replace , $yaml );
     }
 }
@@ -70,13 +70,13 @@ if( !function_exists( "yaml_replace" ) ){
 
 /**
  * Converts an associative array to inline yaml array only
- * 
+ *
  * @access public
- * @param mixed $array 
+ * @param mixed $array
  * @return void
  */
 if( !function_exists( "yaml_array" ) ){
-    
+
     function yaml_array( $array ){
 
         $temp = array();
@@ -90,7 +90,7 @@ if( !function_exists( "yaml_array" ) ){
                 $temp[] = $key . " : " . $value;
             }
         }
-    
+
         return " { " . implode( ", " , $temp ) . " } ";
     }
 }

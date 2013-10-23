@@ -10,14 +10,14 @@ if( ENVIRONMENT == "PRODUCTION" ){
  * php cli.php --module=dump
  *
  * @uses Application
- * @package 
+ * @package
  * @version $id$
  * @author Kim
  * @license Cellcity
  */
 class Dump extends Cli {
 
-    protected $model = array( "resource" );    
+    protected $model = array( "resource" );
     protected $helper;
     protected $library;
     protected $language;
@@ -27,9 +27,9 @@ class Dump extends Cli {
 
     /**
      * Index
-     * 
+     *
      * @access public
-     * @param mixed $datas 
+     * @param mixed $datas
      * @return void
      */
     public function index(){
@@ -37,8 +37,8 @@ class Dump extends Cli {
         $debug = element( "d" , $this->argument , "false" );
 
         $exclude = array(
-            "history" 
-        );        
+            "history"
+        );
 
         logh( "Dumping all tables " );
 
@@ -60,15 +60,15 @@ class Dump extends Cli {
                 $syntax = "mysqldump -u%s %s %s %s > %s ";
             }else{
                 $syntax = "mysqldump -u%s -p %s %s %s > %s ";
-            } 
+            }
 
-            
 
-            $syntax = sprintf(  $syntax , 
-                                DB_USERNAME , 
+
+            $syntax = sprintf(  $syntax ,
+                                DB_USERNAME ,
                                 DB_PASSWORD ,
                                 DB_DATABASE ,
-                                $table_name , 
+                                $table_name ,
                                 $path . "/" . $table_name . ".sql" );
 
             logln( $syntax );
@@ -78,13 +78,13 @@ class Dump extends Cli {
             }
 
         }
-        
+
     }
 
-    
-    
+
+
 
 }
-    
+
 
 ?>

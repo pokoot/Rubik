@@ -4,7 +4,7 @@
  * Request and validates a token
  *
  * @uses Api
- * @package 
+ * @package
  * @version $id$
  * @author Kim
  * @license Cellcity
@@ -21,7 +21,7 @@ class Token extends Api {
 
     /**
      * Get the post parameters
-     * 
+     *
      * @access public
      * @return void
      */
@@ -30,7 +30,7 @@ class Token extends Api {
         $this->request["time"]          = post( "time" );
         $this->request["udid"]          = post( "udid" );
         $this->request["auth_key"]      = post( "auth_key" );
-        $this->request["debug"]         = post( "debug" );        
+        $this->request["debug"]         = post( "debug" );
 
         debug_array( $this->request );
 
@@ -40,7 +40,7 @@ class Token extends Api {
 
     /**
      * Validate the key
-     *      
+     *
      * @access public
      * @return void
      */
@@ -53,25 +53,25 @@ class Token extends Api {
 
         $auth_key           = $this->request["auth_key"];
         $time               = $this->request["time"];
-        $udid               = $this->request["udid"];        
- 
+        $udid               = $this->request["udid"];
+
         // check if time is same as the time parameter being passed
         if( $time != $this->request["time"] ){
              return $this->error();
         }
-        
+
         // check for 24 hours validity
         if( $time >= time() + ( 24 * 60  * 60 ) ){
-            return $this->error();            
+            return $this->error();
         }
-       
+
 
         $created_auth_key = MD5( $time . $app_secret_key . $udid );
-      
+
 
         // check if the value is the same as the hash key
         if( $auth_key !== $created_auth_key ){
-            
+
             return $this->error();
         }
 
@@ -83,22 +83,22 @@ class Token extends Api {
 
     /**
      * Shows the erros message
-     * 
+     *
      * @access public
      * @return void
      */
     public function error(){
 
-        $status = $this->get_status( "BAD_KEY" );   
+        $status = $this->get_status( "BAD_KEY" );
 
         $this->response["status"] = array(
-            "code"      => $status["code"] , 
-            "message"   => $status["message"]    
+            "code"      => $status["code"] ,
+            "message"   => $status["message"]
         );
-        
+
 
         return false;
-    
+
     }
 
 
@@ -106,13 +106,13 @@ class Token extends Api {
 
     /**
      * Renders the api
-     * 
+     *
      * @access public
-     * @param mixed $datas 
+     * @param mixed $datas
      * @return void
      */
     public function index(){
-        
+
         $this->request();
 
         $valid = $this->validate();
@@ -129,8 +129,8 @@ class Token extends Api {
         }
 
         $this->show();
-    }   
+    }
 
 }
-  
+
 ?>

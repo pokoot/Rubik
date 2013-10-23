@@ -33,7 +33,7 @@ class Listing{
     public function control(){
 
         $object = new \Library\Form\Listing\Control( $this->config_control );
-        
+
         $html = $object->search();
 
         $html .= $object->button();
@@ -44,7 +44,7 @@ class Listing{
     }
 
     public function grid(){
-    
+
         $object = new \Library\Form\Listing\Control\Grid( $this->config_grid );
 
         $html = $object->grid();

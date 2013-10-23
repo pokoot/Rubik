@@ -1,23 +1,23 @@
 <?php  if ( !defined("BASE_PATH")) exit( "No direct script access allowed" );
 
 /**
- * Create a 32 bit token string with n'th day expiration 
- * 
+ * Create a 32 bit token string with n'th day expiration
+ *
  * @access public
- * @param float $day 
- * @param float $hour 
- * @param float $minute 
+ * @param float $day
+ * @param float $hour
+ * @param float $minute
  * @return void
 */
 if( !function_exists('token_create')){
-         
+
     function token_create( $day = 1 , $hour = 0 , $minute = 0 ){
 
-        // n'th day * 24 hours * 60 minutes * 60 seconds         
+        // n'th day * 24 hours * 60 minutes * 60 seconds
 
         $temp_day       = 0;
         $temp_hour      = 0;
-        $temp_minute    = 0; 
+        $temp_minute    = 0;
 
         if( $day != 0 ){
             $temp_day = $day * 24 * 60 * 60 ;
@@ -27,10 +27,10 @@ if( !function_exists('token_create')){
             $temp_hour = $hour * 60 * 60;
         }
 
-        if( $minute != 0 ){        
+        if( $minute != 0 ){
             $temp_minute = $minute * 60;
         }
-        
+
         $time = time() + $temp_day + $temp_hour + $temp_minute;
 
         //print "<Br/> temp day = " . $temp_day;
@@ -46,7 +46,7 @@ if( !function_exists('token_create')){
         $hex =  dechex( $time );
         //print "<Br/> hex = " . $hex . " || " . strlen( $hex );
 
-        $pos = rand(0 , 8 );    
+        $pos = rand(0 , 8 );
         $char = chr( 65 + $pos);
         //print "<Br/> char = $char || " . strlen( $char ) ;
 
@@ -58,7 +58,7 @@ if( !function_exists('token_create')){
         $encrypted = substr( md5( $str . SITE_KEY ), $pos, 16 );
 
         //print "<Br/> encrypted = $encrypted || " . strlen( $encrypted );
-         
+
         return $random . $hex . $char . $encrypted;
     }
 }
@@ -72,11 +72,11 @@ if( !function_exists('token_create')){
  *
  * @access	public
  * @param	string
- * @param bool $expiry_check 
+ * @param bool $expiry_check
  * @return	boolean
  */
 if( !function_exists( 'token_validate' ) ){
-     
+
     function token_validate( $str , $expiry_check = true ) {
 
         if( !$str ){
@@ -86,7 +86,7 @@ if( !function_exists( 'token_validate' ) ){
         $time = hexdec( substr($str, 7, 8) );
 
         if( $expiry_check && $time <= time() ){
-            return false;        
+            return false;
         }
 
         $random = substr($str, 0, 16);

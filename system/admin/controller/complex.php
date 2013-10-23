@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 /**
  * A complex example of a controller class
- * 
+ *
  * @uses Admin
  * @uses Action
- * @package 
+ * @package
  * @version $id$
- * @author Harold Kim Cantil 
+ * @author Harold Kim Cantil
  * @license http://pokoot.com/license.txt
  */
-class Complex extends Admin implements Action{     
+class Complex extends Admin implements Action{
 
     protected $model = array( "sample" );
     protected $helper = array( "sample" );
@@ -20,12 +20,12 @@ class Complex extends Admin implements Action{
     protected $vendor;
     protected $js;
     protected $css;
-    
- 
+
+
     public function __construct(){
     }
 
-    public function request(){        
+    public function request(){
     }
 
     public function add(){
@@ -41,8 +41,8 @@ class Complex extends Admin implements Action{
     }
 
 
- 
-    public function index(){        
+
+    public function index(){
         $this->request();
         $this->process();
 
@@ -54,15 +54,15 @@ class Complex extends Admin implements Action{
 
         print "<Br> entry ... ";
         print $form->entry();
-      
+
         $data = array(
-            "title"     => "Complex" , 
-            "request"   => $this->request             
+            "title"     => "Complex" ,
+            "request"   => $this->request
         );
 
         $this->view( $data );
 
-    }  
+    }
 
 }
 ?>

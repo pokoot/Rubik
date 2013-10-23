@@ -1,47 +1,47 @@
-<?php  
+<?php
 
-if ( !defined("BASE_PATH")) exit( "No direct script access allowed." );  
+if ( !defined("BASE_PATH")) exit( "No direct script access allowed." );
 
 /**
  * Check php version
- * 
+ *
  * @access public
- * @param string $version 
+ * @param string $version
  * @return void
  */
 if( !function_exists("is_php")){
-   
+
     function is_php( $version = '5.0.0' ){
-            
-		static $_is_php;
+
+        static $_is_php;
         //print "<Br/> is_php = $_is_php ";
 
-		$version = (string) $version;
+        $version = (string) $version;
 
-		if ( !isset($_is_php[$version])){
-			$_is_php[$version] = (version_compare(PHP_VERSION, $version) < 0) ? FALSE : TRUE;
-		}
+        if ( !isset($_is_php[$version])){
+            $_is_php[$version] = (version_compare(PHP_VERSION, $version) < 0) ? FALSE : TRUE;
+        }
 
-		return $_is_php[$version];
+        return $_is_php[$version];
     }
-} 
-    
+}
+
 
 /**
  * Translate the files
- * 
+ *
  * @access protected
- * @param mixed $msg 
+ * @param mixed $msg
  * @return void
  */
 if( !function_exists("__")){
-    
+
     function __( $constant , $print = true ){
 
         GLOBAL $TRANSLATION;
 
 
-        $value = ( $constant == '' OR !isset( $TRANSLATION[$constant] ) ) ? 
+        $value = ( $constant == '' OR !isset( $TRANSLATION[$constant] ) ) ?
             FALSE : $TRANSLATION[ $constant ];
 
         if ($value === FALSE){
@@ -64,13 +64,13 @@ if( !function_exists("__")){
 
 
 /**
- *  
- * 
+ *
+ *
  * @access public
- * @param mixed $message 
+ * @param mixed $message
  * @return void
  */
-if( !function_exists( "trace" )){    
+if( !function_exists( "trace" )){
     function debug_init( $message ){
         GLOBAL $DEBUG_INIT;
         if( $DEBUG_INIT == true ){

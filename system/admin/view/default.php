@@ -3,18 +3,18 @@
 <?php debug_start(); ?>
 <head>
 <?php
-    print html_title( $title ); 
+    print html_title( $title );
 
 
 ?>
 <style>
-    
+
 </style>
 
 </head>
 <body>
- 
- 
+
+
 
 
 </body>

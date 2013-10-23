@@ -13,38 +13,38 @@
 
 
 /**
- *  
- * 
+ *
+ *
  * @access public
- * @param mixed $email 
+ * @param mixed $email
  * @return void
  */
 if( !function_exists('validate_empty') ){
-    
+
     function validate_empty( $data = "" ){
-        
+
         $data = trim( $data );
 
-        if( empty( $data ) ){            
+        if( empty( $data ) ){
             return true;
         }
-		return false;
-	}
+        return false;
+    }
 }
 
 
 /*
  * Validate email address
  *
- * @access	public
- * @return	bool
+ * @access  public
+ * @return  bool
  */
 if( !function_exists('validate_email') ){
     function validate_email( $email ){
         //$pattern = '/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/';
         $pattern = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
-		return ( preg_match( $pattern , $email ) ) ?  true : false ;
-	}
+        return ( preg_match( $pattern , $email ) ) ?  true : false ;
+    }
 }
 
 
@@ -52,9 +52,9 @@ if( !function_exists('validate_email') ){
 
 /**
  * Checks if it's valid alpha character
- * 
+ *
  * @access public
- * @param string 
+ * @param string
  * @return bool
  */
 if( !function_exists('validate_alpha') ){
@@ -68,8 +68,8 @@ if( !function_exists('validate_alpha') ){
 
 /**
  * Checks if it's a valid numeric character
- * 
- * @param int $val 
+ *
+ * @param int $val
  * @access public
  * @return bool - true on success and false on error
  */
@@ -83,10 +83,10 @@ if( !function_exists('validate_numeric') ){
 
 
 /**
- * Checks if it's a valid alpha numeric character 
- * 
+ * Checks if it's a valid alpha numeric character
+ *
  * @access public
- * @param int $val 
+ * @param int $val
  * @return bool - true on success and false on error
  */
 if( !function_exists('validate_numeric') ){
@@ -100,11 +100,11 @@ if( !function_exists('validate_numeric') ){
 
 /**
  * compare -  compares two variable
- * 
+ *
  * @access public
- * @param mixed 
- * @param mixed 
- * @return bool 
+ * @param mixed
+ * @param mixed
+ * @return bool
  */
 if( !function_exists( 'validate_compare' ) ){
     function validate_compare( $val1 , $val2 ){
@@ -118,11 +118,11 @@ if( !function_exists( 'validate_compare' ) ){
 
 /**
  * Determines whether the value is greater than OR less than the specified conditions
- * 
+ *
  * @access public
  * @param int the number to be evaluated
  * @param int the maximum number
- * @param int the minimum number 
+ * @param int the minimum number
  * @return bool
  */
 if( !function_exists( 'validate_length' ) ){
@@ -136,14 +136,14 @@ if( !function_exists( 'validate_length' ) ){
 
 /**
  * Check if it's a valid url address
- * 
+ *
  * @access public
  * @param string $url - the url address
  * @return bool - true on success and false on error
  */
 if( !function_exists( 'validate_url' ) ){
     function validate_url( $url ){
-        
+
         // note : use this if protocol checking is only used
         //return eregi("^(http|ftp|https)://", $url) ? true : false ;
 
@@ -167,9 +167,9 @@ if( !function_exists( 'validate_url' ) ){
 
 /**
  * Check if it's a valid url image address
- * 
+ *
  * @access public
- * @param string the url image address         
+ * @param string the url image address
  * @return bool
  */
 if( !function_exists( 'validate_image_url' ) ){
@@ -184,7 +184,7 @@ if( !function_exists( 'validate_image_url' ) ){
 
 /**
  * Check if it's a valid date
- * 
+ *
  * @access public
  * @param date $date date in "YYYY-MM-FF" format
  * @return bool
@@ -198,7 +198,7 @@ if( !function_exists( 'validate_date' ) ){
             $year =  $splitDate[0];
             $month = $splitDate[1];
             $day =   $splitDate[2];
-            
+
             $ret = checkdate( $month , $day , $year );
         }
         return $ret;
@@ -210,7 +210,7 @@ if( !function_exists( 'validate_date' ) ){
 
 /**
  * Check if it's a valid date time formal
- * 
+ *
  * @param date $dateTime in "YYYY-MM-FF HH:MM:SS" format
  * @access public
  * @return bool
@@ -224,11 +224,11 @@ if( !function_exists( 'validate_datetime' ) ){
             $year =  $splitDate[0];
             $month = $splitDate[1];
             $day =   $splitDate[2];
-            
+
             $ret = checkdate( $month , $day , $year );
 
             $tmpSplit = split(" ", trim($date));
-            
+
             if(count($tmpSplit) > 1) {
                 $splitTime = split(":", $tmpSplit[1]);
 
@@ -245,7 +245,7 @@ if( !function_exists( 'validate_datetime' ) ){
                 if($sec > 59)
                     $ret = false;
             }
-            
+
         }
         return $ret;
     }
@@ -257,10 +257,10 @@ if( !function_exists( 'validate_datetime' ) ){
 
 /**
  * isUrlImage - check if it's a valid url image address
- * 
+ *
  * @access public
- * @param string $url the url image address        
- * @return bool 
+ * @param string $url the url image address
+ * @return bool
  */
 if( !function_exists( 'validate_image' ) ){
     function validate_image( $img ) {

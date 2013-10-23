@@ -1,13 +1,13 @@
 <?php  if ( !defined("BASE_PATH")) exit( "No direct script access allowed" );
 
 /**
- * hash_hmac_custom('sha1', 'Hello, world!', 'secret', true); 
- * 
+ * hash_hmac_custom('sha1', 'Hello, world!', 'secret', true);
+ *
  * @access public
- * @param mixed $algo 
- * @param mixed $data 
- * @param mixed $key 
- * @param mixed $raw_output 
+ * @param mixed $algo
+ * @param mixed $data
+ * @param mixed $key
+ * @param mixed $raw_output
  * @return void
  */
 function hash_hmac_custom( $algo, $data, $key, $raw_output = false){

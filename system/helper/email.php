@@ -1,8 +1,8 @@
-<?php  if ( !defined("BASE_PATH")) exit( "No direct script access allowed" );  
- 
+<?php  if ( !defined("BASE_PATH")) exit( "No direct script access allowed" );
+
 /**
- * Send an email  
- * 
+ * Send an email
+ *
  * @access public
  * @param mixed $recipient email address
  * @param string $subject email header
@@ -13,21 +13,21 @@ if( !function_exists('send_email')){
 
     function send_email( $to , $subject = 'Test email', $message = 'Hello World' , $cc = '' , $bcc = '' ){
 
-        ini_set('SMTP','localhost'); 
-        ini_set('sendmail_from', 'noreply@thecellcity.com'); 
+        ini_set('SMTP','localhost');
+        ini_set('sendmail_from', 'noreply@thecellcity.com');
 
         $from = "noreply <noreply@thecellcity.com>";
         $from = explode( '<' , $from );
 
         $headers = "From: =?UTF-8?B?" . base64_encode($from[0]). "?= <" . $from[1] . "\n";
 
-        
+
         $to = "=?UTF-8?B?" . base64_encode(''). "?= <" .  $to . ">";
-        
+
 
         $subject = "=?UTF-8?B?" . base64_encode($subject) . "?=\n";
 
-        if( $cc != '' ){            
+        if( $cc != '' ){
             $headers .= "Cc: =?UTF-8?B?" . base64_encode(''). "?= <" . $cc  . ">\n";
         }
 
@@ -37,10 +37,10 @@ if( !function_exists('send_email')){
 
         $headers .=
             "Content-Type: text/plain; " .
-            "charset=UTF-8; format=flowed\n" . 
-            "MIME-Version: 1.0\n" . 
-            "Content-Transfer-Encoding: 8bit\n" . 
-            "X-Mailer: PHP\n"; 
+            "charset=UTF-8; format=flowed\n" .
+            "MIME-Version: 1.0\n" .
+            "Content-Transfer-Encoding: 8bit\n" .
+            "X-Mailer: PHP\n";
 
         $status =  @mail($to, $subject, $message, $headers);
 
@@ -63,7 +63,7 @@ if( !function_exists('send_email')){
 
         return $status;
         */
-	}
+    }
 }
 
 

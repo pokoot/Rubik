@@ -9,9 +9,9 @@
         // FAVICON
 
         $link = array(
-            "rel"   => "shortcut icon" , 
-            "href"  => "favicon.ico" , 
-            "type"  => "image/x-icon"  
+            "rel"   => "shortcut icon" ,
+            "href"  => "favicon.ico" ,
+            "type"  => "image/x-icon"
         );
 
         print html_link( $link , true );
@@ -20,16 +20,16 @@
         $meta = array(
             array( "name" => "robots",          "content" => "no-cache" ),
             array( "name" => "description",     "content" => "" ),
-            array( "name" => "keywords",        "content" => "" ),            
-            array( "name" => "Content-type",    "content" => "text/html; charset=utf-8" , "type" => "equiv" ) 
+            array( "name" => "keywords",        "content" => "" ),
+            array( "name" => "Content-type",    "content" => "text/html; charset=utf-8" , "type" => "equiv" )
         );
-         
+
 
         print html_meta( $meta );
 
         print html_css( "css.php?f=style" );
-        print html_css( "css.php?f=login" );   
-        print html_css( "css.php?f=common" );         
+        print html_css( "css.php?f=login" );
+        print html_css( "css.php?f=common" );
 
     ?>
 </head>
@@ -40,12 +40,12 @@
     </tr>
     <tr>
         <td valign="top" align="center" height="">
-        
+
             <div class="login" style="width:370px;" >
 
-                <?php 
+                <?php
                     $attributes = array(
-                        "src"       => "logo.png" 
+                        "src"       => "logo.png"
                     );
                     print html_img( $attributes );
                 ?>
@@ -55,15 +55,15 @@
                 <?php
 
                     $attributes = array(
-                        "name"  => "main_form" , 
-                        "id"    => "main_form" 
+                        "name"  => "main_form" ,
+                        "id"    => "main_form"
                     );
                     print form_open( $attributes );
 
                 ?>
 
                     <p class="tl" style="margin:15px 0px;">
-                        <b>We Will be Back Soon</b>  
+                        <b>We Will be Back Soon</b>
                         <br/>
                         <br/>
                         We are busy upgrading Central Framework with technology and features.We apologize for the inconvinience and appreciate your patience. Thank you.
@@ -74,10 +74,10 @@
                        <br/><br/>
                         The Cellcity Team
 
-                    </p> 
+                    </p>
                 <?php print form_close(); ?>
 
- 
+
             </div>
 
         </td>

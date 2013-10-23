@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 if ( !defined('BASE_PATH')) exit('No direct script access allowed.');
 
 
 /**
  * The admin controller
- * 
- * @package 
+ *
+ * @package
  * @version $id$
- * @author Harold Kim Cantil 
+ * @author Harold Kim Cantil
  * @license http://pokoot.com/license.txt
  */
 class Admin{
@@ -24,141 +24,141 @@ class Admin{
     protected $yaml;
 
     public function  __construct(){
-       
+
     }
 
 
     /**
-     * Loading external vendor components 
-     * 
+     * Loading external vendor components
+     *
      * @access private
-     * @param mixed $controller 
+     * @param mixed $controller
      * @return void
      */
     private function load_vendor( $controller ){
 
         if( count( $controller->vendor ) == 0 ){
             return null;
-        }   
-        
+        }
+
         foreach( $controller->vendor AS $d ){
 
             $filename = "/vendor/$d/index.php";
 
             $file = APPLICATION_PATH . $filename ;
 
-            if( !file_exists( $file ) ){                
+            if( !file_exists( $file ) ){
                 die( "Unable to load vendor ($filename).");
             }
 
             debug_init( "loading vendor file = $file " );
 
-            require_once $file; 
+            require_once $file;
 
         }
-    
+
     }
 
 
     /**
-     * Load external classes 
-     * 
+     * Load external classes
+     *
      * @access private
-     * @param mixed $controller 
+     * @param mixed $controller
      * @return void
      */
     private function load_library( $controller ){
 
         if( count( $controller->library ) == 0 ){
             return null;
-        }   
-        
+        }
+
         foreach( $controller->library AS $f ){
 
             $filename = "/library/" . $f . ".php";
 
-            $file = APPLICATION_PATH . $filename;             
+            $file = APPLICATION_PATH . $filename;
 
-            if( !file_exists( $file ) ){                
+            if( !file_exists( $file ) ){
                 die( "Unable to load library file ($filename).");
             }
 
             debug_init( "loading library file = $file " );
 
-            require_once $file; 
+            require_once $file;
 
         }
     }
 
 
     /**
-     * Load the application helper files 
-     * 
+     * Load the application helper files
+     *
      * @access private
-     * @param mixed $controller 
+     * @param mixed $controller
      * @return void
      */
     private function load_helper( $controller ){
-    
+
         if( count( $controller->helper ) == 0 ){
             return null;
-        }        
-        
+        }
+
         foreach( $controller->helper AS $f ){
 
             $filename = "/helper/" . $f . ".php";
 
-            $file = APPLICATION_PATH . $filename;             
+            $file = APPLICATION_PATH . $filename;
 
-            if( !file_exists( $file ) ){                
+            if( !file_exists( $file ) ){
                 die( "Unable to load helper file ($filename).");
             }
 
             debug_init( "loading helper file = $file " );
 
-            require_once $file; 
+            require_once $file;
 
         }
- 
+
     }
 
-    
+
     /**
-     * Include the model class and make it as an object property. 
-     * 
+     * Include the model class and make it as an object property.
+     *
      * @access private
-     * @param mixed $controller 
+     * @param mixed $controller
      * @return void
      */
     private function load_model( $controller ){
- 
+
         foreach( $controller->model AS $f ){
 
             $filename = "/admin/model/" . $f . ".php";
 
-            $file = SYSTEM_PATH . $filename ; 
-             
+            $file = SYSTEM_PATH . $filename ;
+
             if( !file_exists( $file ) ){
                 $file = APPLICATION_PATH . $filename ;
             }
 
-            if( !file_exists( $file ) ){                
+            if( !file_exists( $file ) ){
                 die( "Unable to load model file ($filename). ");
             }
 
             debug_init( "loading model file = $file " );
 
-            require_once $file; 
-            
+            require_once $file;
+
 
             // Dynamically instantiate the namespace Model
-            
+
             $namespace_name = "Model\\$f";
-    
+
             $object = new $namespace_name();
 
             // Get the class name automatically without the namespaces.
-            
+
             $class_name = get_class( $object );
             if (preg_match('@\\\\([\w]+)$@', $class_name, $matches)) {
                 $class_name = $matches[1];
@@ -168,26 +168,26 @@ class Admin{
 
         }
 
-    } 
+    }
 
 
     /**
-     * Load the .yml configuration file to the object property $controller->yaml 
+     * Load the .yml configuration file to the object property $controller->yaml
      *
      * @access private
-     * @param mixed $controller 
+     * @param mixed $controller
      */
     private function load_config( $controller ) {
 
         $filename = "/admin/config/" . MODULE . ".yml";
 
-        $file = SYSTEM_PATH . $filename; 
+        $file = SYSTEM_PATH . $filename;
 
         if( !file_exists( $file ) ){
             $file = APPLICATION_PATH . $filename ;
         }
 
-        if( !file_exists( $file ) ){            
+        if( !file_exists( $file ) ){
             die( "Unable to load .yml configuration file ($filename).");
         }
 
@@ -198,17 +198,17 @@ class Admin{
 
         $controller->yaml = $yaml;
 
- 
+
         return $contoller;
     }
 
-   
+
     /**
-     * Load the template html view file 
-     * 
+     * Load the template html view file
+     *
      * @access public
-     * @param string $html 
-     * @param array $param 
+     * @param string $html
+     * @param array $param
      * @return void
      */
     public function view( $param  = array() , $template = "default" ){
@@ -221,7 +221,7 @@ class Admin{
 
         $file = SYSTEM_PATH . $filename;
 
-        if( !file_exists( $file ) ){            
+        if( !file_exists( $file ) ){
             die( "Unable to load view ($filename).");
         }
 
@@ -229,14 +229,14 @@ class Admin{
 
         // TODO :: LOAD JS AND CSS
 
-        require_once $file;    
-    
+        require_once $file;
+
     }
 
 
     /**
-     * Tells whether it is add, edit, delete and save ... 
-     * 
+     * Tells whether it is add, edit, delete and save ...
+     *
      * @access public
      * @return void
      */
@@ -268,7 +268,7 @@ class Admin{
                 }
 
                 $this->save();
-              
+
                 if( isset( $this->request["required"] ) ){
                     $this->request["action"] = ( $this->request["entry_id"] ) ? "EDIT" : "ADD" ;
                 }
@@ -278,13 +278,13 @@ class Admin{
                 break;
         }
 
-       
+
     }
 
 
     /**
-     * First call, acts as a controller of the  
-     * 
+     * First call, acts as a controller of the
+     *
      * @access public
      * @return void
      */
@@ -298,7 +298,7 @@ class Admin{
             $file = APPLICATION_PATH . $filename ;
         }
 
-        if( !file_exists( $file ) ){            
+        if( !file_exists( $file ) ){
             die( "Unable to load module ($filename).");
         }
 
@@ -311,7 +311,7 @@ class Admin{
 
         $module = MODULE;
 
-        $controller = new $module();     
+        $controller = new $module();
 
 
         $this->load_config( $controller );
@@ -319,12 +319,12 @@ class Admin{
         $this->load_helper( $controller );
         $this->load_library( $controller );
         $this->load_vendor( $controller );
-        
+
         //print_r( $controller->yaml );
 
         $controller->index();
 
-        
+
     }
 }
 

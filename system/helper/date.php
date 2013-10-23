@@ -448,7 +448,6 @@ if( !function_exists('fill_time')){
 
 
 
-
 /*
  * Return the number of days between the two dates:
  * http://stackoverflow.com/questions/676824/how-to-calculate-the-difference-between-two-dates-using-php

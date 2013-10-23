@@ -27,7 +27,7 @@ class Form{
         $listing = new \Library\Form\Listing( $this->config_listing );
 
         $listing->query();
-        
+
         $html = $listing->control();
 
         $html .= $listing->grid();
@@ -45,7 +45,7 @@ class Form{
         $html .= $entry->element();
 
         return $html;
-         
+
     }
 
 }

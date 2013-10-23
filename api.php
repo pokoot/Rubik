@@ -1,4 +1,4 @@
 <?php
 
-    1print "api.php";
+    print "api.php";
 ?>

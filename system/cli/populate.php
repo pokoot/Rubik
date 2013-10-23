@@ -1,30 +1,30 @@
 <?php  if ( !defined('BASE_PATH')) exit('No direct script access allowed');
 /**
  * Populate data value
- * 
+ *
  * Basic usage:
- * php cli.php --module=populate --table=merchant 
+ * php cli.php --module=populate --table=merchant
  *
  * @uses Cli
- * @package 
+ * @package
  * @version $id$
  * @author Kim
  * @license Cellcity
  */
 class Populate extends Cli {
-    
+
     protected $helper;
     protected $library = array( "text_generator" , "seed"  );
     protected $language;
-    protected $model = array( "resource" );    
+    protected $model = array( "resource" );
     protected $vendor;
 
 
     /**
      * Index
-     * 
+     *
      * @access public
-     * @param mixed $datas 
+     * @param mixed $datas
      * @return void
      */
     public function index(){
@@ -49,21 +49,21 @@ class Populate extends Cli {
             $this->close();
         }
 
-        logln( "table = " . $table );         
+        logln( "table = " . $table );
         logln( "total = " . $total );
 
 
-        
+
 
         $default = array(
-            'account_id' => 40 , 
+            'account_id' => 40 ,
             'module_id' => rand( 0 , 15 )
         );
 
 
         $seed = new Seed();
         $seed->fill( $table , $total , $default );
- 
+
     }
 
 }

@@ -3,9 +3,9 @@
 
 /**
  * Removes unwanted string.
- * 
+ *
  * @access public
- * @param mixed $buffer 
+ * @param mixed $buffer
  * @return void
  */
 if( !function_exists('minify') ){

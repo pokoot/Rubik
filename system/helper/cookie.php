@@ -65,7 +65,6 @@ if( !function_exists( "cookie_set" )){
 
 
 
-
 /**
  * Fetch an item from the COOKIE array
  *

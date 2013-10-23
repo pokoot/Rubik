@@ -36,8 +36,7 @@ if( !function_exists('force_download')){
             $mime = (is_array($MIME[$extension])) ? $MIME[$extension][0] : $MIME[$extension];
         }
 
-
-        // for stupid ie bug!
+        // for ie bug!
         if(ini_get('zlib.output_compression')){
              ini_set('zlib.output_compression', 'Off');
         };
