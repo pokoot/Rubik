@@ -14,12 +14,12 @@
  * @return	void
  */
 if( !function_exists( "cookie_set" )){
-    function cookie_set( $name, $value, $expiry = "LIFEFTIME" , $path = "/" , 
+    function cookie_set( $name, $value, $expiry = "LIFEFTIME" , $path = "/" ,
         $domain = false ){
         $retval = false;
-        
+
         if(!headers_sent()){
-            
+
             if( $domain === false){
                 $domain = $_SERVER['HTTP_HOST'];
 
@@ -29,20 +29,20 @@ if( !function_exists( "cookie_set" )){
                 }
 
             }
-            
+
 
             if($expiry === "LIFEFTIME" ){
-                $expiry = 1893456000;  
+                $expiry = 1893456000;
             }elseif(is_numeric($expiry)){
                 $expiry += time();
             }else{
                 $expiry = strtotime($expiry);
-            }           
-           
-           
+            }
 
-            $retval = setcookie( COOKIE_PREFIX . $name , $value , $expiry , $path , $domain , $secure = true , $httponly = true ) ;            
-             
+
+
+            $retval = setcookie( COOKIE_PREFIX . $name , $value , $expiry , $path , $domain , $secure = true , $httponly = true ) ;
+
             /*
             print "<br/> name = $name ";
             print "<br/> value = $value ";
@@ -50,7 +50,7 @@ if( !function_exists( "cookie_set" )){
             print "<br/> path = $path ";
             print "<br/> domain = $domain ";
             */
-            
+
 
             if( $retval ){
                 $_COOKIE[ COOKIE_PREFIX . $name] = $value;
@@ -105,7 +105,7 @@ if( !function_exists("cookie_delete")){
             $retval = setcookie( COOKIE_PREFIX . $name, "" , time() - 3600 , $path, $domain , $secure = true , $httponly = true );
 
             if( $remove_from_global ){
-                unset($_COOKIE[ COOKIE_PREFIX . $name]);                
+                unset($_COOKIE[ COOKIE_PREFIX . $name]);
             }
         }else{
             debug( "Error: Headers already sent. Unable to delete cookie = $name " , debug_backtrace() );
