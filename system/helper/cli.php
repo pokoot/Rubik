@@ -41,22 +41,22 @@ if( !function_exists("writeln")){
             }
 
         }
-        
 
-        
+
+
     }
 }
 
 
 /**
- * Log anything that is printed 
- * 
+ * Log anything that is printed
+ *
  * @access public
- * @param mixed $msg 
+ * @param mixed $msg
  * @return void
  */
 function logln( $msg ){
- 
+
     $backtrace = debug_backtrace();
 
     foreach($backtrace AS $entry) {
@@ -82,9 +82,9 @@ function logln( $msg ){
 
 /**
  * log including the breaks
- * 
+ *
  * @access public
- * @param float $count 
+ * @param float $count
  * @return void
  */
 function logbr( $count = 1 ){
@@ -139,7 +139,7 @@ if( !function_exists("colorln")){
         if( $DEBUG != "true" ){
             return;
         }
-        echo "\033[44;1;31m";       
+        echo "\033[44;1;31m";
         echo $msg;
         // reset to normal
         echo "\033[0m";
